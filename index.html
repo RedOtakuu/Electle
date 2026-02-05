@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Electle - Parliament Game</title>
-    <!-- Подключаем библиотеку для зума -->
     <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
     
     <style>
@@ -28,30 +27,31 @@
             flex-direction: column;
             align-items: center;
             height: 100vh;
-            overflow: hidden; /* Блокируем скролл всей страницы */
+            overflow: hidden;
         }
 
         header { padding: 10px; font-weight: bold; font-size: 1.2rem; letter-spacing: 2px; border-bottom: 1px solid #333; width: 100%; text-align: center; background: var(--bg-color); z-index: 10; }
 
-        /* Верхняя секция (Диаграмма) */
         .top-section { margin-top: 10px; width: 100%; max-width: 800px; display: flex; justify-content: center; flex-shrink: 0; }
+        
         .diagram-container {
             background: white; padding: 5px; border-radius: var(--border-radius); height: 160px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;
+            width: 300px; /* Фиксируем ширину, чтобы не прыгало */
         }
-        .diagram-container img { max-height: 100%; max-width: 100%; object-fit: contain; }
+        
+        /* ВАЖНО: object-fit contain чтобы картинка не обрезалась */
+        .diagram-container img { max-height: 100%; max-width: 100%; object-fit: contain; display: block; }
 
-        /* Секция карты (растягивается) */
         .map-wrapper {
             width: 95%; max-width: 900px; 
-            flex-grow: 1; /* Занимает всё доступное место */
+            flex-grow: 1; 
             background-color: var(--ocean-color); border: 1px solid #444;
             border-radius: var(--border-radius); position: relative; overflow: hidden; margin: 10px 0;
         }
         svg { width: 100%; height: 100%; cursor: grab; }
         svg:active { cursor: grabbing; }
 
-        /* Стили стран */
         path { fill: #d3d3d3; stroke: #111; stroke-width: 0.5px; transition: fill 0.3s; cursor: pointer; }
         path:hover { fill: #bbb; }
         path.selected { fill: var(--accent-blue) !important; }
@@ -59,11 +59,9 @@
         path.wrong { fill: var(--wrong-red) !important; opacity: 0.4; }
         path.regional { fill: var(--partial-yellow) !important; opacity: 0.8; }
 
-        /* Кнопки зума */
         .zoom-controls { position: absolute; bottom: 10px; right: 10px; display: flex; flex-direction: column; gap: 5px; }
         .zoom-btn { width: 35px; height: 35px; background: rgba(0,0,0,0.6); color: white; border: 1px solid #555; border-radius: 4px; cursor: pointer; font-size: 20px; display:flex; justify-content:center; align-items:center; }
 
-        /* Нижняя секция (Управление) */
         .bottom-section { width: 95%; max-width: 600px; padding-bottom: 20px; display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
         
         .controls { display: flex; gap: 10px; background: #252526; padding: 10px; border-radius: var(--border-radius); align-items: center; }
@@ -74,17 +72,14 @@
         button.guess-btn { padding: 10px 20px; font-size: 14px; font-weight: bold; background: var(--correct-green); color: white; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
         button.guess-btn:disabled { background: #555; cursor: not-allowed; }
 
-        /* История попыток */
         .history-log { display: flex; flex-direction: column; gap: 5px; max-height: 100px; overflow-y: auto; }
         .history-row { display: flex; justify-content: space-between; background: #252526; padding: 8px 12px; border-radius: 4px; border-left: 5px solid var(--wrong-red); animation: slideIn 0.3s ease-out; font-size: 0.9rem; }
         .history-row.win { border-left-color: var(--correct-green); }
         .history-row.close { border-left-color: var(--partial-yellow); }
         @keyframes slideIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Таймер на главном экране */
         #main-timer-box { display: none; text-align: center; background: #252526; padding: 8px; border-radius: 8px; border: 1px solid #444; }
 
-        /* Модальное окно */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); z-index: 100;
@@ -116,7 +111,8 @@
 
     <div class="top-section">
         <div class="diagram-container">
-            <img id="diagram-img" src="" alt="Parliament Diagram">
+            <!-- ⬇️ ВОТ ОНО! referrerpolicy="no-referrer" СПАСАЕТ СИТУАЦИЮ ⬇️ -->
+            <img id="diagram-img" src="" alt="Parliament Diagram" referrerpolicy="no-referrer">
         </div>
     </div>
 
@@ -130,7 +126,6 @@
         <svg id="world-map" viewBox="0 0 2000 857" xmlns="http://www.w3.org/2000/svg">
             <!-- ⬇️⬇️⬇️ ВСТАВЬ СЮДА СВОЮ КАРТУ SVG (ВЕСЬ КОД МЕЖДУ <svg> и </svg>) ⬇️⬇️⬇️ -->
             
-            <!-- Я оставила пустышку для примера, УДАЛИ ЭТИ PATH и вставь свои! -->
             <path id="DE" name="Germany" d="M1053.9 158.9l1.4 3.1-1.2 1.7 1.9 2.1 1.5 3.3-0.2 2.2 2.4 3.9-2.2 0.6-1.3-0.7-1.1 1.2-3.5 1.2-1.7 1.6-3.4 1.3 1 1.8 0.7 2.7 2.6 1.5 3 2.6-1.6 2.9-1.7 0.8 1 4.1-0.4 1.1-1.7-1.3-2.4-0.2-3.5 1.1-4.4-0.3-0.6 1.7-2.7-1.7-1.4 0.3-5.5-1.9-1 1.3-4.2 0 0.4-4.5 2.4-4.2-7.2-1.2-2.4-1.6 0.2-2.7-1-1.4 0.4-4.2-1.1-6.5 2.9 0 1.2-2.3 0.9-5.6-0.9-2.1 0.8-1.3 4-0.3 1 1.3 3.1-3-1.3-2.3-0.4-3.4 3.7 0.8 2.9-0.9 0.3 2.3 4.9 1.4 0.1 2.2 4.7-1.2 2.6-1.6 5.6 2.4 2.4 1.9z"></path>
             <path id="FR" name="France" d="M 1035.7 231.4 1034.2 236.3 1031.8 235 1030.5 230.8 1031.4 228.4 1034.6 226 1035.7 231.4 Z M 1014.4 185 1015.5 185.5 1016.9 185.4 1019.3 187 1026.5 188.2 1024.1 192.4 1023.7 196.9 1022.4 198 1020.1 197.4 1020.3 199 1016.7 202.5 1016.7 205.4 1019.1 204.4 1020.9 207.1 1020.8 208.9 1022.3 211.3 1020.6 213.2 1022.1 218.1 1024.9 218.9 1024.4 221.6 1019.9 225.2 1009.7 223.5 1002.3 225.6 1001.7 229.4 995.8 230.2 990 227.3 988.1 228.7 978.6 225.8 976.6 223.4 979.3 219.6 980.3 207 975.2 200.4 971.5 197.2 963.9 194.8 963.5 190.2 970 188.9 978.3 190.5 976.8 183.4 981.5 186.1 992.9 181.3 994.4 176.2 998.6 174.9 999.4 177.1 1001.6 177.2 1004 179.7 1007.5 182.6 1010 182.1 1014.4 185 Z"></path>
             
@@ -146,7 +141,7 @@
         </div>
         <div class="history-log" id="history"></div>
         
-        <!-- ТАЙМЕР НА ГЛАВНОМ ЭКРАНЕ (Скрыт по умолчанию) -->
+        <!-- ТАЙМЕР НА ГЛАВНОМ ЭКРАНЕ -->
         <div id="main-timer-box">
             <span style="color: #888; font-size: 0.8em;">NEXT PARLIAMENT IN:</span><br>
             <span class="countdown-text" style="font-size: 1.1em; font-weight: bold; font-family: monospace;">00:00:00</span>
@@ -175,22 +170,23 @@
         </div>
     </div>
 
-    <!-- DEV TOOLS -->
+    <!-- DEV TOOLS (КНОПКИ ТЕСТА) -->
     <div style="margin-top: 20px; margin-bottom: 20px; opacity: 0.3; text-align: center; font-size: 10px;">
         <button onclick="devResetDaily()" style="cursor: pointer;">🔄 Dev: Reset</button>
         <button onclick="devPlayRandom()" style="cursor: pointer;">🎲 Dev: Random</button>
     </div>
 
     <script>
-        // --- 1. БАЗА ДАННЫХ (ПРЯМЫЕ ССЫЛКИ!) ---
-        // Используем upload.wikimedia.org - это самые надежные ссылки на свете
+        // --- 1. БАЗА ДАННЫХ ---
+        // Используем простые, вечные ссылки Special:FilePath
+        // Картинки будут SVG (высокое качество) или PNG, если добавить ?width=800
         const database = [
             {
                 "id": "de",
                 "country": "Germany",
                 "year": 2021,
                 "region": "Europe",
-                "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/20th_Bundestag_of_Germany.svg/800px-20th_Bundestag_of_Germany.svg.png",
+                "img": "https://commons.wikimedia.org/wiki/Special:FilePath/20th_Bundestag_of_Germany.svg",
                 "wiki_link": "https://en.wikipedia.org/wiki/2021_German_federal_election"
             },
             {
@@ -198,7 +194,7 @@
                 "country": "France",
                 "year": 2022,
                 "region": "Europe",
-                "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/National_Assembly_of_France_2022.svg/800px-National_Assembly_of_France_2022.svg.png",
+                "img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Assembly_of_France_2022.svg",
                 "wiki_link": "https://en.wikipedia.org/wiki/2022_French_legislative_election"
             }
         ];
@@ -229,8 +225,6 @@
         let gameActive = true;
 
         function getRegionByCountryId(id) {
-            // Приводим ID к верхнему регистру для поиска в базе (DE, FR...)
-            // Внимание: если в SVG id="de", а в базе "DE", надо приводить к одному виду
             const upperId = id.toUpperCase(); 
             for (const [region, countries] of Object.entries(regionMap)) {
                 if (countries.includes(upperId)) return region;
@@ -246,7 +240,7 @@
             if (lastWon === todayStr) {
                 gameActive = false;
                 showWinModal(true);
-                document.getElementById('main-timer-box').style.display = 'block'; // Показываем таймер на главном
+                document.getElementById('main-timer-box').style.display = 'block'; 
             }
 
             // Карта
@@ -295,7 +289,6 @@
             const mapEl = document.getElementById(selectedId);
             const userRegion = getRegionByCountryId(selectedId);
             
-            // Сравниваем ID (приводим к нижнему регистру для надежности)
             const isCountryCorrect = (selectedId.toLowerCase() === target.id.toLowerCase());
             const isRegionCorrect = (userRegion === target.region);
             const yearDiff = Math.abs(userYear - target.year);
@@ -309,7 +302,6 @@
                 const regionCountries = regionMap[target.region];
                 if (regionCountries) {
                     regionCountries.forEach(countryId => {
-                        // Пытаемся найти по ID (может быть "DE" или "de")
                         let el = document.getElementById(countryId) || document.getElementById(countryId.toLowerCase());
                         if (el && el.id !== selectedId && !el.classList.contains('correct')) {
                             el.classList.add('regional');
@@ -340,7 +332,7 @@
                 gameActive = false;
                 statusText.innerHTML = "<span style='color:#538d4e'>VICTORY!</span>";
                 localStorage.setItem('electle_last_won', new Date().toISOString().split('T')[0]);
-                document.getElementById('main-timer-box').style.display = 'block'; // Показываем таймер
+                document.getElementById('main-timer-box').style.display = 'block'; 
                 setTimeout(() => showWinModal(false), 1500);
             } else if (isCountryCorrect) {
                 statusText.innerHTML = `<span style='color:#538d4e'>Correct Country! Fix the Year (${userYear} ${yearIcon})</span>`;
@@ -363,7 +355,6 @@
             const listContainer = document.getElementById('win-history-list');
             listContainer.innerHTML = '';
             
-            // Копируем историю в модалку (последние сверху)
             for (let i = 0; i < historyRows.length; i++) {
                 const miniRow = document.createElement('div');
                 miniRow.className = 'mini-row';
@@ -393,7 +384,6 @@
             document.querySelectorAll('.countdown-text').forEach(t => t.innerText = timeStr);
         }
 
-        // DEV TOOLS
         function devResetDaily() {
             localStorage.removeItem('electle_last_won');
             location.reload();
