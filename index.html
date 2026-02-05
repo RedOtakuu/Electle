@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electle - Parliament Game</title>
+    <title>Electle - Daily Parliament</title>
+    
+    <!-- Фавиконка (Иконка вкладки) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>">
+
     <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
     
     <style>
@@ -19,35 +23,54 @@
         }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            display: flex; flex-direction: column; align-items: center;
+            height: 100vh; overflow: hidden;
         }
 
-        header { padding: 10px; font-weight: bold; font-size: 1.2rem; letter-spacing: 2px; border-bottom: 1px solid #333; width: 100%; text-align: center; background: var(--bg-color); z-index: 10; }
+        /* ЗАГОЛОВОК И ПОДЗАГОЛОВОК */
+        header { 
+            padding: 15px 10px; width: 100%; text-align: center; 
+            background: var(--bg-color); z-index: 10; border-bottom: 1px solid #333;
+        }
+        h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; }
+        .subtitle { 
+            margin: 5px 0 0 0; font-size: 0.9rem; color: #aaa; font-weight: normal; 
+            max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.4;
+        }
 
-        .top-section { margin-top: 10px; width: 100%; max-width: 800px; display: flex; justify-content: center; flex-shrink: 0; }
+        /* ДИАГРАММА (УВЕЛИЧЕНА) */
+        .top-section { margin-top: 15px; width: 100%; display: flex; justify-content: center; flex-shrink: 0; }
         
         .diagram-container {
-            background: white; padding: 5px; border-radius: var(--border-radius); height: 160px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;
-            width: 300px; /* Фиксируем ширину, чтобы не прыгало */
+            background: white; 
+            padding: 10px; 
+            border-radius: var(--border-radius); 
+            height: 220px; /* Было 160, стало больше */
+            width: 400px;  /* Ширина тоже больше */
+            max-width: 90%; /* Чтобы влезало в мобилки */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+            display: flex; align-items: center; justify-content: center;
         }
         
-        /* ВАЖНО: object-fit contain чтобы картинка не обрезалась */
-        .diagram-container img { max-height: 100%; max-width: 100%; object-fit: contain; display: block; }
+        .diagram-container img { 
+            max-height: 100%; 
+            max-width: 100%; 
+            width: auto; 
+            height: auto; 
+            object-fit: contain; 
+            display: block; 
+        }
 
+        /* КАРТА */
         .map-wrapper {
-            width: 95%; max-width: 900px; 
-            flex-grow: 1; 
+            width: 95%; max-width: 1000px; 
+            flex-grow: 1; /* Занимает всё оставшееся место */
             background-color: var(--ocean-color); border: 1px solid #444;
-            border-radius: var(--border-radius); position: relative; overflow: hidden; margin: 10px 0;
+            border-radius: var(--border-radius); position: relative; overflow: hidden; margin: 15px 0;
         }
         svg { width: 100%; height: 100%; cursor: grab; }
         svg:active { cursor: grabbing; }
@@ -62,13 +85,14 @@
         .zoom-controls { position: absolute; bottom: 10px; right: 10px; display: flex; flex-direction: column; gap: 5px; }
         .zoom-btn { width: 35px; height: 35px; background: rgba(0,0,0,0.6); color: white; border: 1px solid #555; border-radius: 4px; cursor: pointer; font-size: 20px; display:flex; justify-content:center; align-items:center; }
 
+        /* УПРАВЛЕНИЕ */
         .bottom-section { width: 95%; max-width: 600px; padding-bottom: 20px; display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
         
         .controls { display: flex; gap: 10px; background: #252526; padding: 10px; border-radius: var(--border-radius); align-items: center; }
         .status-text { flex-grow: 1; font-weight: bold; color: #aaa; text-align: left; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .status-text span { color: var(--accent-blue); }
         
-        input { padding: 10px; width: 70px; text-align: center; font-size: 16px; border-radius: 4px; border: 1px solid #555; background: #333; color: white; }
+        input { padding: 10px; width: 80px; text-align: center; font-size: 16px; border-radius: 4px; border: 1px solid #555; background: #333; color: white; }
         button.guess-btn { padding: 10px 20px; font-size: 14px; font-weight: bold; background: var(--correct-green); color: white; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
         button.guess-btn:disabled { background: #555; cursor: not-allowed; }
 
@@ -80,38 +104,33 @@
 
         #main-timer-box { display: none; text-align: center; background: #252526; padding: 8px; border-radius: 8px; border: 1px solid #444; }
 
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); z-index: 100;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-        }
+        /* МОДАЛКА */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
         .modal-overlay.visible { opacity: 1; pointer-events: all; }
-        .modal-content {
-            background: #121213; padding: 30px; border-radius: 10px; text-align: center;
-            border: 1px solid #444; width: 90%; max-width: 350px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5); position: relative;
-        }
+        .modal-content { background: #121213; padding: 30px; border-radius: 10px; text-align: center; border: 1px solid #444; width: 90%; max-width: 350px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); position: relative; }
         .modal-title { font-size: 1.5rem; margin-bottom: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: white; }
         .modal-info { font-size: 1rem; color: #ccc; margin-bottom: 20px; line-height: 1.6; }
-        
         .close-btn { position: absolute; top: 10px; right: 15px; background: transparent; border: none; color: #666; font-size: 24px; cursor: pointer; font-weight: bold; }
         .close-btn:hover { color: white; }
-
         .stats-container { background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; margin: 15px 0; text-align: left; max-height: 150px; overflow-y: auto; }
         .stat-header { font-size: 0.9rem; font-weight: bold; margin-bottom: 5px; text-align: center; color: #aaa; }
         .mini-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #333; font-size: 0.8rem; color: #ccc; }
         .mini-row:last-child { border-bottom: none; }
-
     </style>
 </head>
 <body>
 
-    <header>ELECTLE</header>
+    <header>
+        <h1>🏛️ ELECTLE</h1>
+        <p class="subtitle">
+            Guess the <b>country</b> and <b>election year</b> based on the parliamentary seating diagram.<br>
+            (Lower house only)
+        </p>
+    </header>
 
     <div class="top-section">
         <div class="diagram-container">
-            <!-- ⬇️ ВОТ ОНО! referrerpolicy="no-referrer" СПАСАЕТ СИТУАЦИЮ ⬇️ -->
+            <!-- referrerpolicy="no-referrer" помогает загружать картинки с Википедии -->
             <img id="diagram-img" src="" alt="Parliament Diagram" referrerpolicy="no-referrer">
         </div>
     </div>
@@ -124,12 +143,8 @@
         </div>
 
         <svg id="world-map" viewBox="0 0 2000 857" xmlns="http://www.w3.org/2000/svg">
-            <!-- ⬇️⬇️⬇️ ВСТАВЬ СЮДА СВОЮ КАРТУ SVG (ВЕСЬ КОД МЕЖДУ <svg> и </svg>) ⬇️⬇️⬇️ -->
-            
             <path id="DE" name="Germany" d="M1053.9 158.9l1.4 3.1-1.2 1.7 1.9 2.1 1.5 3.3-0.2 2.2 2.4 3.9-2.2 0.6-1.3-0.7-1.1 1.2-3.5 1.2-1.7 1.6-3.4 1.3 1 1.8 0.7 2.7 2.6 1.5 3 2.6-1.6 2.9-1.7 0.8 1 4.1-0.4 1.1-1.7-1.3-2.4-0.2-3.5 1.1-4.4-0.3-0.6 1.7-2.7-1.7-1.4 0.3-5.5-1.9-1 1.3-4.2 0 0.4-4.5 2.4-4.2-7.2-1.2-2.4-1.6 0.2-2.7-1-1.4 0.4-4.2-1.1-6.5 2.9 0 1.2-2.3 0.9-5.6-0.9-2.1 0.8-1.3 4-0.3 1 1.3 3.1-3-1.3-2.3-0.4-3.4 3.7 0.8 2.9-0.9 0.3 2.3 4.9 1.4 0.1 2.2 4.7-1.2 2.6-1.6 5.6 2.4 2.4 1.9z"></path>
             <path id="FR" name="France" d="M 1035.7 231.4 1034.2 236.3 1031.8 235 1030.5 230.8 1031.4 228.4 1034.6 226 1035.7 231.4 Z M 1014.4 185 1015.5 185.5 1016.9 185.4 1019.3 187 1026.5 188.2 1024.1 192.4 1023.7 196.9 1022.4 198 1020.1 197.4 1020.3 199 1016.7 202.5 1016.7 205.4 1019.1 204.4 1020.9 207.1 1020.8 208.9 1022.3 211.3 1020.6 213.2 1022.1 218.1 1024.9 218.9 1024.4 221.6 1019.9 225.2 1009.7 223.5 1002.3 225.6 1001.7 229.4 995.8 230.2 990 227.3 988.1 228.7 978.6 225.8 976.6 223.4 979.3 219.6 980.3 207 975.2 200.4 971.5 197.2 963.9 194.8 963.5 190.2 970 188.9 978.3 190.5 976.8 183.4 981.5 186.1 992.9 181.3 994.4 176.2 998.6 174.9 999.4 177.1 1001.6 177.2 1004 179.7 1007.5 182.6 1010 182.1 1014.4 185 Z"></path>
-            
-            <!-- ⬆️⬆️⬆️ ВСТАВЛЯЙ СЮДА ⬆️⬆️⬆️ -->
         </svg>
     </div>
 
@@ -141,36 +156,31 @@
         </div>
         <div class="history-log" id="history"></div>
         
-        <!-- ТАЙМЕР НА ГЛАВНОМ ЭКРАНЕ -->
         <div id="main-timer-box">
             <span style="color: #888; font-size: 0.8em;">NEXT PARLIAMENT IN:</span><br>
             <span class="countdown-text" style="font-size: 1.1em; font-weight: bold; font-family: monospace;">00:00:00</span>
         </div>
     </div>
 
-    <!-- ОКНО ПОБЕДЫ -->
+    <!-- WIN MODAL -->
     <div id="win-modal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">✕</button>
-
             <div class="modal-title">🎉 VICTORY!</div>
             <div class="modal-info">
                 You identified <b style="color:var(--accent-blue)" id="win-country-name"></b><br>
                 Election Year: <b style="color:var(--correct-green)" id="win-year-val"></b>
             </div>
-
-            <!-- Статистика -->
             <div class="stats-container">
                 <div class="stat-header">Attempts: <span id="attempt-count">0</span></div>
                 <div id="win-history-list"></div>
             </div>
-
             <div style="font-size: 0.8em; text-transform: uppercase; color: #888; margin-top: 15px;">Next Game In</div>
             <div class="countdown-text" style="font-size: 1.5rem; font-weight: bold; font-family: monospace; margin-top: 5px;">00:00:00</div>
         </div>
     </div>
 
-    <!-- DEV TOOLS (КНОПКИ ТЕСТА) -->
+    <!-- DEV TOOLS -->
     <div style="margin-top: 20px; margin-bottom: 20px; opacity: 0.3; text-align: center; font-size: 10px;">
         <button onclick="devResetDaily()" style="cursor: pointer;">🔄 Dev: Reset</button>
         <button onclick="devPlayRandom()" style="cursor: pointer;">🎲 Dev: Random</button>
@@ -178,15 +188,14 @@
 
     <script>
         // --- 1. БАЗА ДАННЫХ ---
-        // Используем простые, вечные ссылки Special:FilePath
-        // Картинки будут SVG (высокое качество) или PNG, если добавить ?width=800
+        // Обрати внимание: я добавила ?width=1000 к ссылкам. Это заставит Вики отдать PNG.
         const database = [
             {
                 "id": "de",
                 "country": "Germany",
                 "year": 2021,
                 "region": "Europe",
-                "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bundestag_2021.svg",
+                "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bundestag_2021.svg?width=1000",
                 "wiki_link": "https://en.wikipedia.org/wiki/2021_German_federal_election"
             },
             {
@@ -194,7 +203,7 @@
                 "country": "France",
                 "year": 2022,
                 "region": "Europe",
-                "img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Assembly_2022.svg",
+                "img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Assembly_2022.svg?width=1000",
                 "wiki_link": "https://en.wikipedia.org/wiki/2022_French_legislative_election"
             }
         ];
@@ -233,7 +242,6 @@
         }
 
         window.onload = function() {
-            // Проверка победы сегодня
             const todayStr = new Date().toISOString().split('T')[0];
             const lastWon = localStorage.getItem('electle_last_won');
 
@@ -243,15 +251,12 @@
                 document.getElementById('main-timer-box').style.display = 'block'; 
             }
 
-            // Карта
             panZoom = svgPanZoom('#world-map', {
                 zoomEnabled: true, controlIconsEnabled: false, fit: true, center: true, minZoom: 1, maxZoom: 20
             });
 
-            // Картинка
             document.getElementById('diagram-img').src = target.img;
 
-            // Клики по странам
             const paths = document.querySelectorAll('path');
             paths.forEach(p => {
                 p.addEventListener('click', () => {
@@ -293,7 +298,6 @@
             const isRegionCorrect = (userRegion === target.region);
             const yearDiff = Math.abs(userYear - target.year);
 
-            // Красим карту
             mapEl.classList.remove('selected');
 
             if (isCountryCorrect) {
@@ -313,7 +317,6 @@
                 mapEl.classList.add('wrong');
             }
 
-            // История
             let yearIcon = yearDiff === 0 ? "✅" : (userYear < target.year ? "↑" : "↓");
             let rowClass = "history-row";
             if (isCountryCorrect && yearDiff === 0) rowClass += " win";
@@ -327,7 +330,6 @@
             row.innerHTML = `<div>${selectedName}</div><div>${icon} | ${userYear} ${yearIcon}</div>`;
             historyLog.prepend(row);
 
-            // Проверка победы
             if (isCountryCorrect && yearDiff === 0) {
                 gameActive = false;
                 statusText.innerHTML = "<span style='color:#538d4e'>VICTORY!</span>";
