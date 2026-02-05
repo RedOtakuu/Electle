@@ -1,0 +1,18 @@
+[
+    {
+        "id": "de_2021",
+        "country": "Germany",
+        "year": 2021,
+        "region": "Europe",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/a/af/Bundestag_2021.svg",
+        "wiki_link": "https://en.wikipedia.org/wiki/2021_German_federal_election"
+    },
+    {
+        "id": "fr_2022",
+        "country": "France",
+        "year": 2022,
+        "region": "Europe",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/e/ee/National_Assembly_2022.svg",
+        "wiki_link": "https://en.wikipedia.org/wiki/2022_French_legislative_election"
+    }
+]
