@@ -4,7 +4,7 @@
         "country": "Germany",
         "year": 2021,
         "region": "Europe",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/a/af/Bundestag_2021.svg",
+        "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bundestag_2021.svg",
         "wiki_link": "https://en.wikipedia.org/wiki/2021_German_federal_election"
     },
     {
@@ -12,7 +12,7 @@
         "country": "France",
         "year": 2022,
         "region": "Europe",
-        "image": "https://upload.wikimedia.org/wikipedia/commons/e/ee/National_Assembly_2022.svg",
+        "image": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Assembly_2022.svg",
         "wiki_link": "https://en.wikipedia.org/wiki/2022_French_legislative_election"
     }
 ]
