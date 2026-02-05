@@ -201,10 +201,22 @@
     <script>
         // --- 1. GAME DATABASE (Добавь сюда сотни стран!) ---
         const database = [
-            { id: "DE", country: "Germany", year: 2021, region: "Europe", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/20th_Bundestag_of_Germany.svg/640px-20th_Bundestag_of_Germany.svg.png" },
-            { id: "FR", country: "France", year: 2022, region: "Europe", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/National_Assembly_of_France_2022.svg/640px-National_Assembly_of_France_2022.svg.png" },
-            // { id: "BR", country: "Brazil", year: 2018, region: "South America", img: "..." },
-            // Сюда копируй JSON который ты делаешь вручную
+			{
+				"id": "de",
+				"country": "Germany",
+				"year": 2021,
+				"region": "Europe",
+				"img": "https://commons.wikimedia.org/wiki/Special:FilePath/20th_Bundestag_of_Germany.svg?width=800",
+				"wiki_link": "https://en.wikipedia.org/wiki/2021_German_federal_election"
+			},
+			{
+				"id": "fr",
+				"country": "France",
+				"year": 2022,
+				"region": "Europe",
+				"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Assembly_of_France_2022.svg?width=800",
+				"wiki_link": "https://en.wikipedia.org/wiki/2022_French_legislative_election"
+			}
         ];
 
         // Region Mapping
