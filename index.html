@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electle - Daily Parliament Game</title>
+    <title>Electle - Parliament Game</title>
+    <!-- Подключаем библиотеку для зума -->
     <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
     
     <style>
@@ -26,28 +27,31 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
+            overflow: hidden; /* Блокируем скролл всей страницы */
         }
 
-        header { padding: 15px; font-weight: bold; font-size: 1.5rem; letter-spacing: 2px; border-bottom: 1px solid #333; width: 100%; text-align: center; }
+        header { padding: 10px; font-weight: bold; font-size: 1.2rem; letter-spacing: 2px; border-bottom: 1px solid #333; width: 100%; text-align: center; background: var(--bg-color); z-index: 10; }
 
-        /* TOP SECTION */
-        .top-section { margin-top: 20px; width: 100%; max-width: 800px; display: flex; justify-content: center; }
+        /* Верхняя секция (Диаграмма) */
+        .top-section { margin-top: 10px; width: 100%; max-width: 800px; display: flex; justify-content: center; flex-shrink: 0; }
         .diagram-container {
-            background: white; padding: 10px; border-radius: var(--border-radius); height: 200px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            background: white; padding: 5px; border-radius: var(--border-radius); height: 160px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); display: flex; align-items: center;
         }
         .diagram-container img { max-height: 100%; max-width: 100%; object-fit: contain; }
 
-        /* MAP SECTION */
+        /* Секция карты (растягивается) */
         .map-wrapper {
-            width: 95%; max-width: 900px; height: 450px;
+            width: 95%; max-width: 900px; 
+            flex-grow: 1; /* Занимает всё доступное место */
             background-color: var(--ocean-color); border: 1px solid #444;
-            border-radius: var(--border-radius); position: relative; overflow: hidden; margin-top: 20px;
+            border-radius: var(--border-radius); position: relative; overflow: hidden; margin: 10px 0;
         }
         svg { width: 100%; height: 100%; cursor: grab; }
         svg:active { cursor: grabbing; }
 
+        /* Стили стран */
         path { fill: #d3d3d3; stroke: #111; stroke-width: 0.5px; transition: fill 0.3s; cursor: pointer; }
         path:hover { fill: #bbb; }
         path.selected { fill: var(--accent-blue) !important; }
@@ -55,25 +59,32 @@
         path.wrong { fill: var(--wrong-red) !important; opacity: 0.4; }
         path.regional { fill: var(--partial-yellow) !important; opacity: 0.8; }
 
+        /* Кнопки зума */
         .zoom-controls { position: absolute; bottom: 10px; right: 10px; display: flex; flex-direction: column; gap: 5px; }
-        .zoom-btn { width: 30px; height: 30px; background: rgba(0,0,0,0.6); color: white; border: 1px solid #555; border-radius: 4px; cursor: pointer; font-size: 18px; display:flex; justify-content:center; align-items:center; }
+        .zoom-btn { width: 35px; height: 35px; background: rgba(0,0,0,0.6); color: white; border: 1px solid #555; border-radius: 4px; cursor: pointer; font-size: 20px; display:flex; justify-content:center; align-items:center; }
 
-        /* CONTROLS SECTION */
-        .bottom-section { width: 95%; max-width: 600px; padding: 20px 0; display: flex; flex-direction: column; gap: 15px; }
-        .controls { display: flex; gap: 10px; background: #252526; padding: 15px; border-radius: var(--border-radius); align-items: center; }
-        .status-text { flex-grow: 1; font-weight: bold; color: #aaa; text-align: left; font-size: 0.9rem; }
+        /* Нижняя секция (Управление) */
+        .bottom-section { width: 95%; max-width: 600px; padding-bottom: 20px; display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
+        
+        .controls { display: flex; gap: 10px; background: #252526; padding: 10px; border-radius: var(--border-radius); align-items: center; }
+        .status-text { flex-grow: 1; font-weight: bold; color: #aaa; text-align: left; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .status-text span { color: var(--accent-blue); }
-        input { padding: 10px; width: 80px; text-align: center; font-size: 16px; border-radius: 4px; border: 1px solid #555; background: #333; color: white; }
-        button.guess-btn { padding: 10px 25px; font-size: 14px; font-weight: bold; background: var(--correct-green); color: white; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
+        
+        input { padding: 10px; width: 70px; text-align: center; font-size: 16px; border-radius: 4px; border: 1px solid #555; background: #333; color: white; }
+        button.guess-btn { padding: 10px 20px; font-size: 14px; font-weight: bold; background: var(--correct-green); color: white; border: none; border-radius: 4px; cursor: pointer; text-transform: uppercase; }
         button.guess-btn:disabled { background: #555; cursor: not-allowed; }
 
-        /* HISTORY */
-        .history-row { display: flex; justify-content: space-between; background: #252526; padding: 10px; border-radius: 4px; border-left: 5px solid var(--wrong-red); margin-bottom: 5px; animation: slideIn 0.3s ease-out; font-size: 0.9rem; }
+        /* История попыток */
+        .history-log { display: flex; flex-direction: column; gap: 5px; max-height: 100px; overflow-y: auto; }
+        .history-row { display: flex; justify-content: space-between; background: #252526; padding: 8px 12px; border-radius: 4px; border-left: 5px solid var(--wrong-red); animation: slideIn 0.3s ease-out; font-size: 0.9rem; }
         .history-row.win { border-left-color: var(--correct-green); }
         .history-row.close { border-left-color: var(--partial-yellow); }
         @keyframes slideIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* MODAL */
+        /* Таймер на главном экране */
+        #main-timer-box { display: none; text-align: center; background: #252526; padding: 8px; border-radius: 8px; border: 1px solid #444; }
+
+        /* Модальное окно */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); z-index: 100;
@@ -82,54 +93,21 @@
         }
         .modal-overlay.visible { opacity: 1; pointer-events: all; }
         .modal-content {
-            background: #121213; padding: 40px; border-radius: 10px; text-align: center;
-            border: 1px solid #444; max-width: 90%; width: 350px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            background: #121213; padding: 30px; border-radius: 10px; text-align: center;
+            border: 1px solid #444; width: 90%; max-width: 350px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); position: relative;
         }
-        .modal-title { font-size: 1.5rem; margin-bottom: 15px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .modal-info { font-size: 1rem; color: #ccc; margin-bottom: 25px; line-height: 1.6; }
-        .countdown { font-size: 1.5rem; font-weight: bold; font-family: monospace; margin-top: 10px; display: block; }
-        /* Стили для статистики в модальном окне */
-		.stats-container {
-			background: rgba(255, 255, 255, 0.05);
-			padding: 15px;
-			border-radius: 8px;
-			margin: 15px 0;
-			text-align: left;
-			max-height: 200px;
-			overflow-y: auto; /* Скролл, если попыток много */
-		}
+        .modal-title { font-size: 1.5rem; margin-bottom: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: white; }
+        .modal-info { font-size: 1rem; color: #ccc; margin-bottom: 20px; line-height: 1.6; }
+        
+        .close-btn { position: absolute; top: 10px; right: 15px; background: transparent; border: none; color: #666; font-size: 24px; cursor: pointer; font-weight: bold; }
+        .close-btn:hover { color: white; }
 
-		.stat-header {
-			font-size: 1.1rem;
-			font-weight: bold;
-			margin-bottom: 10px;
-			text-align: center;
-			color: var(--text-color);
-		}
+        .stats-container { background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 8px; margin: 15px 0; text-align: left; max-height: 150px; overflow-y: auto; }
+        .stat-header { font-size: 0.9rem; font-weight: bold; margin-bottom: 5px; text-align: center; color: #aaa; }
+        .mini-row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #333; font-size: 0.8rem; color: #ccc; }
+        .mini-row:last-child { border-bottom: none; }
 
-		/* Уменьшенная версия строки истории для модалки */
-		.mini-row {
-			display: flex;
-			justify-content: space-between;
-			padding: 5px 10px;
-			border-bottom: 1px solid #333;
-			font-size: 0.85rem;
-			color: #ccc;
-		}
-		.mini-row:last-child { border-bottom: none; }
-		.close-btn {
-			position: absolute;
-			top: 10px;
-			right: 15px;
-			background: transparent;
-			border: none;
-			color: #666;
-			font-size: 24px;
-			cursor: pointer;
-			font-weight: bold;
-		}
-		.close-btn:hover { color: white; }
     </style>
 </head>
 <body>
@@ -150,10 +128,13 @@
         </div>
 
         <svg id="world-map" viewBox="0 0 2000 857" xmlns="http://www.w3.org/2000/svg">
-            <!-- ВСТАВЬ СЮДА СВОЮ КАРТУ ПОЛНОСТЬЮ! -->
+            <!-- ⬇️⬇️⬇️ ВСТАВЬ СЮДА СВОЮ КАРТУ SVG (ВЕСЬ КОД МЕЖДУ <svg> и </svg>) ⬇️⬇️⬇️ -->
+            
+            <!-- Я оставила пустышку для примера, УДАЛИ ЭТИ PATH и вставь свои! -->
             <path id="DE" name="Germany" d="M1053.9 158.9l1.4 3.1-1.2 1.7 1.9 2.1 1.5 3.3-0.2 2.2 2.4 3.9-2.2 0.6-1.3-0.7-1.1 1.2-3.5 1.2-1.7 1.6-3.4 1.3 1 1.8 0.7 2.7 2.6 1.5 3 2.6-1.6 2.9-1.7 0.8 1 4.1-0.4 1.1-1.7-1.3-2.4-0.2-3.5 1.1-4.4-0.3-0.6 1.7-2.7-1.7-1.4 0.3-5.5-1.9-1 1.3-4.2 0 0.4-4.5 2.4-4.2-7.2-1.2-2.4-1.6 0.2-2.7-1-1.4 0.4-4.2-1.1-6.5 2.9 0 1.2-2.3 0.9-5.6-0.9-2.1 0.8-1.3 4-0.3 1 1.3 3.1-3-1.3-2.3-0.4-3.4 3.7 0.8 2.9-0.9 0.3 2.3 4.9 1.4 0.1 2.2 4.7-1.2 2.6-1.6 5.6 2.4 2.4 1.9z"></path>
             <path id="FR" name="France" d="M 1035.7 231.4 1034.2 236.3 1031.8 235 1030.5 230.8 1031.4 228.4 1034.6 226 1035.7 231.4 Z M 1014.4 185 1015.5 185.5 1016.9 185.4 1019.3 187 1026.5 188.2 1024.1 192.4 1023.7 196.9 1022.4 198 1020.1 197.4 1020.3 199 1016.7 202.5 1016.7 205.4 1019.1 204.4 1020.9 207.1 1020.8 208.9 1022.3 211.3 1020.6 213.2 1022.1 218.1 1024.9 218.9 1024.4 221.6 1019.9 225.2 1009.7 223.5 1002.3 225.6 1001.7 229.4 995.8 230.2 990 227.3 988.1 228.7 978.6 225.8 976.6 223.4 979.3 219.6 980.3 207 975.2 200.4 971.5 197.2 963.9 194.8 963.5 190.2 970 188.9 978.3 190.5 976.8 183.4 981.5 186.1 992.9 181.3 994.4 176.2 998.6 174.9 999.4 177.1 1001.6 177.2 1004 179.7 1007.5 182.6 1010 182.1 1014.4 185 Z"></path>
-            <!-- ... -->
+            
+            <!-- ⬆️⬆️⬆️ ВСТАВЛЯЙ СЮДА ⬆️⬆️⬆️ -->
         </svg>
     </div>
 
@@ -164,81 +145,79 @@
             <button class="guess-btn" id="submit-btn" onclick="makeGuess()">GUESS</button>
         </div>
         <div class="history-log" id="history"></div>
+        
+        <!-- ТАЙМЕР НА ГЛАВНОМ ЭКРАНЕ (Скрыт по умолчанию) -->
+        <div id="main-timer-box">
+            <span style="color: #888; font-size: 0.8em;">NEXT PARLIAMENT IN:</span><br>
+            <span class="countdown-text" style="font-size: 1.1em; font-weight: bold; font-family: monospace;">00:00:00</span>
+        </div>
     </div>
-	
-	<!-- Таймер на главном экране (появляется после победы) -->
-	<div id="main-timer-box" style="display: none; text-align: center; margin-top: 10px; background: #333; padding: 10px; border-radius: 8px;">
-		<span style="color: #888; font-size: 0.9em;">NEXT PARLIAMENT IN:</span><br>
-		<span class="countdown-text" style="font-size: 1.2em; font-weight: bold; font-family: monospace;">00:00:00</span>
-	</div>
 
+    <!-- ОКНО ПОБЕДЫ -->
+    <div id="win-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">✕</button>
 
-    <!-- WIN MODAL -->
-	<div id="win-modal" class="modal-overlay">
-		<div class="modal-content">
-			<!-- ВОТ ЭТА НОВАЯ КНОПКА: -->
-			<button class="close-btn" onclick="closeModal()">✕</button>
+            <div class="modal-title">🎉 VICTORY!</div>
+            <div class="modal-info">
+                You identified <b style="color:var(--accent-blue)" id="win-country-name"></b><br>
+                Election Year: <b style="color:var(--correct-green)" id="win-year-val"></b>
+            </div>
 
-			<div class="modal-info">
-				You identified <b style="color:var(--accent-blue)" id="win-country-name"></b><br>
-				Election Year: <b style="color:var(--correct-green)" id="win-year-val"></b>
-			</div>
+            <!-- Статистика -->
+            <div class="stats-container">
+                <div class="stat-header">Attempts: <span id="attempt-count">0</span></div>
+                <div id="win-history-list"></div>
+            </div>
 
-			<!-- Сюда вставится статистика -->
-			<div class="stats-container">
-				<div class="stat-header"> attempts: <span id="attempt-count">0</span></div>
-				<div id="win-history-list"></div>
-			</div>
+            <div style="font-size: 0.8em; text-transform: uppercase; color: #888; margin-top: 15px;">Next Game In</div>
+            <div class="countdown-text" style="font-size: 1.5rem; font-weight: bold; font-family: monospace; margin-top: 5px;">00:00:00</div>
+        </div>
+    </div>
 
-			<div style="font-size: 0.8em; text-transform: uppercase; color: #888; margin-top: 15px;">Next Game In</div>
-
-			<div class="countdown-text" style="font-size: 1.5rem; font-weight: bold; font-family: monospace; margin-top: 10px;">00:00:00</div>
-
-		</div>
-	</div>
-
+    <!-- DEV TOOLS -->
+    <div style="margin-top: 20px; margin-bottom: 20px; opacity: 0.3; text-align: center; font-size: 10px;">
+        <button onclick="devResetDaily()" style="cursor: pointer;">🔄 Dev: Reset</button>
+        <button onclick="devPlayRandom()" style="cursor: pointer;">🎲 Dev: Random</button>
+    </div>
 
     <script>
-        // --- 1. GAME DATABASE (Добавь сюда сотни стран!) ---
+        // --- 1. БАЗА ДАННЫХ (ПРЯМЫЕ ССЫЛКИ!) ---
+        // Используем upload.wikimedia.org - это самые надежные ссылки на свете
         const database = [
-			{
-				"id": "de",
-				"country": "Germany",
-				"year": 2021,
-				"region": "Europe",
-				"img": "https://commons.wikimedia.org/wiki/Special:FilePath/20th_Bundestag_of_Germany.svg?width=800",
-				"wiki_link": "https://en.wikipedia.org/wiki/2021_German_federal_election"
-			},
-			{
-				"id": "fr",
-				"country": "France",
-				"year": 2022,
-				"region": "Europe",
-				"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Assembly_of_France_2022.svg?width=800",
-				"wiki_link": "https://en.wikipedia.org/wiki/2022_French_legislative_election"
-			}
+            {
+                "id": "de",
+                "country": "Germany",
+                "year": 2021,
+                "region": "Europe",
+                "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/20th_Bundestag_of_Germany.svg/800px-20th_Bundestag_of_Germany.svg.png",
+                "wiki_link": "https://en.wikipedia.org/wiki/2021_German_federal_election"
+            },
+            {
+                "id": "fr",
+                "country": "France",
+                "year": 2022,
+                "region": "Europe",
+                "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/National_Assembly_of_France_2022.svg/800px-National_Assembly_of_France_2022.svg.png",
+                "wiki_link": "https://en.wikipedia.org/wiki/2022_French_legislative_election"
+            }
         ];
 
-        // Region Mapping
         const regionMap = {
-            "Europe": ["DE", "FR", "IT", "ES", "GB", "PL", "UA", "RU", "SE", "NO", "FI"],
-            "South America": ["BR", "AR", "PE", "CO", "VE", "CL"],
+            "Europe": ["DE", "FR", "IT", "ES", "GB", "PL", "UA", "RU", "SE", "NO", "FI", "PT", "NL", "BE", "AT", "DK", "GR", "CZ", "HU"],
+            "South America": ["BR", "AR", "PE", "CO", "VE", "CL", "EC", "BO", "PY", "UY"],
             "North America": ["US", "CA", "MX"],
-            "Asia": ["CN", "JP", "IN", "KR", "ID"],
-            "Africa": ["EG", "ZA", "NG", "KE"],
+            "Asia": ["CN", "JP", "IN", "KR", "ID", "TH", "VN", "TR", "IR", "PK"],
+            "Africa": ["EG", "ZA", "NG", "KE", "ET", "MA", "DZ"],
             "Oceania": ["AU", "NZ"]
         };
 
-        // --- 2. DAILY LOGIC ---
+        // --- 2. ЛОГИКА ---
         function getDailyTarget() {
-            // Начало эпохи (дата запуска игры)
             const epoch = new Date("2024-01-01");
             const today = new Date();
             const diffTime = Math.abs(today - epoch);
             const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
-            
-            // Выбираем страну по кругу: День 1 -> Индекс 1, День 100 -> Индекс 100
-            // % database.length гарантирует, что когда список кончится, он начнется сначала
             const index = diffDays % database.length;
             return database[index];
         }
@@ -249,26 +228,36 @@
         let panZoom = null;
         let gameActive = true;
 
-        // --- 3. INIT ---
+        function getRegionByCountryId(id) {
+            // Приводим ID к верхнему регистру для поиска в базе (DE, FR...)
+            // Внимание: если в SVG id="de", а в базе "DE", надо приводить к одному виду
+            const upperId = id.toUpperCase(); 
+            for (const [region, countries] of Object.entries(regionMap)) {
+                if (countries.includes(upperId)) return region;
+            }
+            return null;
+        }
+
         window.onload = function() {
-            // Check if already won today
+            // Проверка победы сегодня
             const todayStr = new Date().toISOString().split('T')[0];
             const lastWon = localStorage.getItem('electle_last_won');
 
             if (lastWon === todayStr) {
                 gameActive = false;
-                showWinModal(true); // Show immediately without animation
+                showWinModal(true);
+                document.getElementById('main-timer-box').style.display = 'block'; // Показываем таймер на главном
             }
-			document.getElementById('main-timer-box').style.display = 'block';
-            // Setup Map
+
+            // Карта
             panZoom = svgPanZoom('#world-map', {
                 zoomEnabled: true, controlIconsEnabled: false, fit: true, center: true, minZoom: 1, maxZoom: 20
             });
 
-            // Setup Diagram
+            // Картинка
             document.getElementById('diagram-img').src = target.img;
 
-            // Setup Map Clicks
+            // Клики по странам
             const paths = document.querySelectorAll('path');
             paths.forEach(p => {
                 p.addEventListener('click', () => {
@@ -289,223 +278,144 @@
                 });
             });
 
-            // Start Countdown
             setInterval(updateCountdown, 1000);
             updateCountdown();
         };
 
-        function getRegionByCountryId(id) {
-            for (const [region, countries] of Object.entries(regionMap)) {
-                if (countries.includes(id)) return region;
+        function makeGuess() {
+            if (!gameActive) return;
+
+            const yearInput = document.getElementById('year-input');
+            const statusText = document.getElementById('selected-display');
+            const userYear = parseInt(yearInput.value);
+
+            if (!selectedId) { statusText.innerHTML = "<span style='color:#ff5555'>⚠ Select a country!</span>"; return; }
+            if (!userYear) { statusText.innerHTML = "<span style='color:#ff5555'>⚠ Enter year!</span>"; return; }
+
+            const mapEl = document.getElementById(selectedId);
+            const userRegion = getRegionByCountryId(selectedId);
+            
+            // Сравниваем ID (приводим к нижнему регистру для надежности)
+            const isCountryCorrect = (selectedId.toLowerCase() === target.id.toLowerCase());
+            const isRegionCorrect = (userRegion === target.region);
+            const yearDiff = Math.abs(userYear - target.year);
+
+            // Красим карту
+            mapEl.classList.remove('selected');
+
+            if (isCountryCorrect) {
+                mapEl.classList.add('correct');
+            } else if (isRegionCorrect) {
+                const regionCountries = regionMap[target.region];
+                if (regionCountries) {
+                    regionCountries.forEach(countryId => {
+                        // Пытаемся найти по ID (может быть "DE" или "de")
+                        let el = document.getElementById(countryId) || document.getElementById(countryId.toLowerCase());
+                        if (el && el.id !== selectedId && !el.classList.contains('correct')) {
+                            el.classList.add('regional');
+                        }
+                    });
+                }
+                mapEl.classList.add('wrong');
+            } else {
+                mapEl.classList.add('wrong');
             }
-            return null;
+
+            // История
+            let yearIcon = yearDiff === 0 ? "✅" : (userYear < target.year ? "↑" : "↓");
+            let rowClass = "history-row";
+            if (isCountryCorrect && yearDiff === 0) rowClass += " win";
+            else if (isCountryCorrect || isRegionCorrect) rowClass += " close";
+
+            let icon = isCountryCorrect ? "🌍✅" : (isRegionCorrect ? "🌍🟡" : "🌍❌");
+
+            const historyLog = document.getElementById('history');
+            const row = document.createElement('div');
+            row.className = rowClass;
+            row.innerHTML = `<div>${selectedName}</div><div>${icon} | ${userYear} ${yearIcon}</div>`;
+            historyLog.prepend(row);
+
+            // Проверка победы
+            if (isCountryCorrect && yearDiff === 0) {
+                gameActive = false;
+                statusText.innerHTML = "<span style='color:#538d4e'>VICTORY!</span>";
+                localStorage.setItem('electle_last_won', new Date().toISOString().split('T')[0]);
+                document.getElementById('main-timer-box').style.display = 'block'; // Показываем таймер
+                setTimeout(() => showWinModal(false), 1500);
+            } else if (isCountryCorrect) {
+                statusText.innerHTML = `<span style='color:#538d4e'>Correct Country! Fix the Year (${userYear} ${yearIcon})</span>`;
+                yearInput.select();
+            } else {
+                selectedId = null;
+                statusText.innerHTML = "Selected: <span>—</span>";
+                yearInput.value = "";
+            }
         }
 
-        // --- 4. GUESS LOGIC ---
-        function makeGuess() {
-			if (!gameActive) return;
-
-			const yearInput = document.getElementById('year-input');
-			const statusText = document.getElementById('selected-display');
-			const userYear = parseInt(yearInput.value);
-
-			if (!selectedId) { 
-				statusText.innerHTML = "<span style='color:#ff5555'>⚠ Select a country first!</span>"; 
-				return; 
-			}
-			if (!userYear) { 
-				statusText.innerHTML = "<span style='color:#ff5555'>⚠ Enter a year!</span>"; 
-				return; 
-			}
-
-			const mapEl = document.getElementById(selectedId);
-			const userRegion = getRegionByCountryId(selectedId);
-			
-			const isCountryCorrect = (selectedId === target.id);
-			const isRegionCorrect = (userRegion === target.region);
-			const yearDiff = Math.abs(userYear - target.year);
-
-			// 1. КРАСИМ КАРТУ
-			mapEl.classList.remove('selected');
-
-			if (isCountryCorrect) {
-				mapEl.classList.add('correct'); // Зеленый навсегда
-			} else if (isRegionCorrect) {
-				// Красим весь регион в желтый
-				const regionCountries = regionMap[target.region];
-				if (regionCountries) {
-					regionCountries.forEach(countryId => {
-						const el = document.getElementById(countryId);
-						if (el && el.id !== selectedId && !el.classList.contains('correct')) {
-							el.classList.add('regional');
-						}
-					});
-				}
-				mapEl.classList.add('wrong');
-			} else {
-				mapEl.classList.add('wrong');
-			}
-
-			// 2. ДОБАВЛЯЕМ В ИСТОРИЮ
-			let yearIcon = yearDiff === 0 ? "✅" : (userYear < target.year ? "↑" : "↓");
-			
-			let rowClass = "history-row";
-			if (isCountryCorrect && yearDiff === 0) rowClass += " win";
-			else if (isCountryCorrect || isRegionCorrect) rowClass += " close";
-
-			let icon = isCountryCorrect ? "🌍✅" : (isRegionCorrect ? "🌍🟡" : "🌍❌");
-
-			const historyLog = document.getElementById('history');
-			const row = document.createElement('div');
-			row.className = rowClass;
-			row.innerHTML = `
-				<div>${selectedName}</div>
-				<div>${icon} | ${userYear} ${yearIcon}</div>
-			`;
-			historyLog.prepend(row);
-
-			// 3. ПРОВЕРКА СОСТОЯНИЯ
-			if (isCountryCorrect && yearDiff === 0) {
-				// ПОБЕДА
-				gameActive = false;
-				statusText.innerHTML = "<span style='color:#538d4e'>VICTORY!</span>";
-				localStorage.setItem('electle_last_won', new Date().toISOString().split('T')[0]);
-				setTimeout(() => showWinModal(false), 1500);
-
-			} else if (isCountryCorrect) {
-				// ПОЛУ-ПОБЕДА (Страна верная, год нет)
-				// Не сбрасываем selectedId, чтобы игрок мог сразу поменять год
-				// Визуально возвращаем "выделение" (синий), но поверх зеленого класса это может быть не видно,
-				// поэтому полагаемся на текст:
-				statusText.innerHTML = `<span style='color:#538d4e'>Correct Country! Now fix the Year (${userYear} ${yearIcon})</span>`;
-				// Фокус обратно в поле ввода, чтобы сразу печатать
-				yearInput.select(); 
-				
-			} else {
-				// МИМО
-				selectedId = null;
-				statusText.innerHTML = "Selected: <span>—</span>";
-				yearInput.value = ""; // Очищаем год только если страна неверная
-			}
-		}
-
-
-
         function showWinModal(instant) {
-			// Заполняем инфо
-			document.getElementById('win-country-name').innerText = target.country;
-			document.getElementById('win-year-val').innerText = target.year;
-			document.getElementById('submit-btn').disabled = true;
-			document.getElementById('year-input').disabled = true;
+            document.getElementById('win-country-name').innerText = target.country;
+            document.getElementById('win-year-val').innerText = target.year;
+            document.getElementById('submit-btn').disabled = true;
+            document.getElementById('year-input').disabled = true;
 
-			// СБОР СТАТИСТИКИ
-			// Берем все строки из истории (они уже есть в DOM)
-			const historyRows = document.querySelectorAll('.history-row');
-			const attempts = historyRows.length;
-			document.getElementById('attempt-count').innerText = attempts;
+            const historyRows = document.querySelectorAll('.history-row');
+            document.getElementById('attempt-count').innerText = historyRows.length;
+            const listContainer = document.getElementById('win-history-list');
+            listContainer.innerHTML = '';
+            
+            // Копируем историю в модалку (последние сверху)
+            for (let i = 0; i < historyRows.length; i++) {
+                const miniRow = document.createElement('div');
+                miniRow.className = 'mini-row';
+                miniRow.innerHTML = historyRows[i].innerHTML;
+                listContainer.appendChild(miniRow);
+            }
+            
+            const modal = document.getElementById('win-modal');
+            modal.classList.add('visible');
+            if(instant) modal.style.transition = 'none';
+        }
 
-			const listContainer = document.getElementById('win-history-list');
-			listContainer.innerHTML = ''; // Очистка
+        function closeModal() {
+            document.getElementById('win-modal').classList.remove('visible');
+        }
 
-			// Копируем историю в модалку (в обратном порядке, чтобы первая попытка была сверху)
-			// historyRows сейчас в порядке "новые сверху", поэтому нам нужно перевернуть для списка "1, 2, 3..."
-			// Или оставить как есть. Давай оставим как в логе (последние сверху).
-			
-			historyRows.forEach(row => {
-				const miniRow = document.createElement('div');
-				miniRow.className = 'mini-row';
-				// Берем текст из HTML строки истории
-				// row.children[0] это Имя, row.children[1] это Иконки
-				miniRow.innerHTML = `<span>${row.children[0].innerText}</span> <span>${row.children[1].innerText}</span>`;
-				listContainer.appendChild(miniRow);
-			});
-			
-			// Показываем окно
-			const modal = document.getElementById('win-modal');
-			modal.classList.add('visible');
-			if(instant) modal.style.transition = 'none';
-		}
+        function updateCountdown() {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            const diff = tomorrow - now;
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            const timeStr = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+            document.querySelectorAll('.countdown-text').forEach(t => t.innerText = timeStr);
+        }
 
-
-		function closeModal() {
-			document.getElementById('win-modal').classList.remove('visible');
-		}
-
-		function updateCountdown() {
-			const now = new Date();
-			const tomorrow = new Date(now);
-			tomorrow.setDate(tomorrow.getDate() + 1);
-			tomorrow.setHours(0, 0, 0, 0);
-
-			const diff = tomorrow - now;
-			
-			const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-			const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-			const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-			const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-			// Находим ВСЕ элементы с классом countdown-text и обновляем их
-			const timers = document.querySelectorAll('.countdown-text');
-			timers.forEach(t => t.innerText = timeString);
-		}
-
-		// --- DEVELOPER FUNCTIONS ---
-		function devResetDaily() {
-			// 1. Удаляем запись о победе
-			localStorage.removeItem('electle_last_won');
-			// 2. Перезагружаем страницу
-			location.reload();
-		}
-
-		function devPlayRandom() {
-			// 1. Выбираем случайную цель из базы
-			const randomIndex = Math.floor(Math.random() * database.length);
-			target = database[randomIndex];
-			
-			// 2. Сбрасываем интерфейс
-			resetGameState();
-			
-			// 3. Сообщаем тебе, что это тест
-			console.log("TEST MODE ACTIVATED. Target:", target);
-			document.getElementById('selected-display').innerHTML = "<span style='color:orange'>⚠ TEST MODE: " + target.country + target.year + "</span>";
-		}
-
-		// Вспомогательная функция полной очистки (нужна для рандома)
-		function resetGameState() {
-			gameActive = true;
-			selectedId = null;
-			
-			// Очистка карты
-			document.querySelectorAll('path').forEach(p => {
-				p.classList.remove('correct', 'wrong', 'regional', 'selected');
-			});
-			
-			// Обновление картинки
-			document.getElementById('diagram-img').src = target.img;
-			
-			// Очистка полей
-			document.getElementById('year-input').value = '';
-			document.getElementById('year-input').disabled = false;
-			document.getElementById('submit-btn').disabled = false;
-			
-			// Очистка истории
-			document.getElementById('history').innerHTML = '';
-			
-			// Скрытие модалки
-			document.getElementById('win-modal').classList.remove('visible');
-			
-			// Сброс зума
-			if(panZoom) panZoom.reset();
-		}
+        // DEV TOOLS
+        function devResetDaily() {
+            localStorage.removeItem('electle_last_won');
+            location.reload();
+        }
+        function devPlayRandom() {
+            const randomIndex = Math.floor(Math.random() * database.length);
+            target = database[randomIndex];
+            resetGameState();
+            console.log("TEST MODE:", target);
+            document.getElementById('selected-display').innerHTML = "<span style='color:orange'>⚠ TEST: " + target.country + "</span>";
+        }
+        function resetGameState() {
+            gameActive = true; selectedId = null;
+            document.querySelectorAll('path').forEach(p => p.classList.remove('correct', 'wrong', 'regional', 'selected'));
+            document.getElementById('diagram-img').src = target.img;
+            document.getElementById('year-input').value = ''; document.getElementById('year-input').disabled = false;
+            document.getElementById('submit-btn').disabled = false;
+            document.getElementById('history').innerHTML = '';
+            document.getElementById('win-modal').classList.remove('visible');
+            document.getElementById('main-timer-box').style.display = 'none';
+            if(panZoom) panZoom.reset();
+        }
     </script>
-	<!-- DEV TOOLS -->
-	<div style="margin-top: 50px; margin-bottom: 20px; opacity: 0.5; text-align: center;">
-		<p style="font-size: 12px; color: #666;">🔧 DEVELOPER ZONE</p>
-		<button onclick="devResetDaily()" style="padding: 5px 10px; cursor: pointer;">🔄 Reset Daily Progress</button>
-		<button onclick="devPlayRandom()" style="padding: 5px 10px; cursor: pointer;">🎲 Test Random Level</button>
-	</div>
-
 </body>
 </html>
-
