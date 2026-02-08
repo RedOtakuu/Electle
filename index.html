@@ -11,6 +11,44 @@
     <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
     
     <style>
+		#main-menu {
+			position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+			background-color: var(--bg-color);
+			z-index: 2000; /* Поверх всего */
+			display: flex; flex-direction: column; align-items: center; justify-content: center;
+			transition: transform 0.3s ease-in-out;
+		}
+		#main-menu.hidden { transform: translateY(-100%); pointer-events: none; }
+
+		.menu-title { font-size: 3rem; margin-bottom: 10px; letter-spacing: 4px; }
+		.menu-desc { color: #aaa; margin-bottom: 40px; max-width: 400px; text-align: center; line-height: 1.5; }
+
+		.menu-btn {
+			background: #252526; border: 1px solid #444; color: white;
+			padding: 15px 30px; margin: 10px; width: 220px;
+			font-size: 1.2rem; cursor: pointer; border-radius: 8px;
+			transition: all 0.2s; text-transform: uppercase; font-weight: bold;
+			display: flex; align-items: center; justify-content: center; gap: 10px;
+		}
+		.menu-btn:hover { background: #333; border-color: var(--accent-blue); transform: scale(1.05); }
+		.menu-btn.primary { background: var(--correct-green); border: none; }
+		.menu-btn.primary:hover { background: #467a42; }
+
+		/* КНОПКА НАЗАД В ХЕДЕРЕ */
+		.back-btn {
+			position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
+			background: none; border: none; color: #666; font-size: 24px; cursor: pointer;
+		}
+		.back-btn:hover { color: white; }
+
+		/* КНОПКА NEXT ROUND В МОДАЛКЕ */
+		#next-round-btn {
+			display: none; /* По умолчанию скрыта */
+			margin-top: 15px; width: 100%; padding: 12px;
+			background: var(--accent-blue); color: white; border: none;
+			border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer;
+		}
+		#next-round-btn:hover { opacity: 0.9; }
         :root {
             --bg-color: #1a1a1b;
             --ocean-color: #2c2c2e;
@@ -119,14 +157,14 @@
     </style>
 </head>
 <body>
-
     <header>
-        <h1>🏛️ ELECTLE</h1>
-        <p class="subtitle">
-            Guess the <b>country</b> and <b>election year</b> based on the parliamentary seating diagram.<br>
-            (Lower house only)
-        </p>
-    </header>
+		<button class="back-btn" onclick="goToMenu()" title="Back to Menu">🏠</button>
+		<h1>🏛️ ELECTLE</h1>
+		<p class="subtitle">
+			Guess the <b>country</b> and <b>election year</b> based on the parliamentary seating diagram.<br>
+			(Lower house only)
+		</p>
+	</header>
 
     <div class="top-section">
         <div class="diagram-container">
@@ -231,6 +269,7 @@
             </div>
             <div style="font-size: 0.8em; text-transform: uppercase; color: #888; margin-top: 15px;">Next Game In</div>
             <div class="countdown-text" style="font-size: 1.5rem; font-weight: bold; font-family: monospace; margin-top: 5px;">00:00:00</div>
+			<button id="next-round-btn" onclick="nextRound()">⏭ NEXT ROUND</button>
         </div>
     </div>
 
@@ -239,6 +278,17 @@
         <button onclick="devResetDaily()" style="cursor: pointer;">🔄 Dev: Reset</button>
         <button onclick="devPlayRandom()" style="cursor: pointer;">🎲 Dev: Random</button>
     </div>
+	<div id="main-menu">
+		<div class="menu-title">🏛️ ELECTLE</div>
+		<div class="menu-desc">Test your knowledge of parliamentary politics. Guess the country and election year based on the seating plan.</div>
+		
+		<button class="menu-btn primary" onclick="startGame('daily')">
+			📅 Daily Mode
+		</button>
+		<button class="menu-btn" onclick="startGame('endless')">
+			♾️ Endless Mode
+		</button>
+	</div>
 
     <script>
         const database = [
@@ -5410,276 +5460,295 @@
                 "img": "https://commons.wikimedia.org/wiki/Special:FilePath/Icelandic_Althing_Composition_1995.svg?width=600",
                 "wiki_link": "https://en.wikipedia.org/wiki/1995_Icelandic_parliamentary_election#Results"
             },
-        ];
+		];
 
-        const regionMap = {
-            "Western Europe": ["DE", "FR", "IT", "MT", "LU", "BE", "NL", "UK", "DK", "NO", "FI", "SE", "IS", "ES", "PT", "IE", "SW", "AT"],
+		const regionMap = {
+			"Western Europe": ["DE", "FR", "IT", "MT", "LU", "BE", "NL", "UK", "DK", "NO", "FI", "SE", "IS", "ES", "PT", "IE", "SW", "AT"],
             "Eastern Europe": ["RU", "UA", "BY", "MD", "EE", "LV", "LT", "PL", "CZ", "SK", "HU", "RO", "BG", "GR", "MK", "AL", "ME", "RS", "BA", "XK", "HR", "SI"],
-        };
+		};
 
-        // --- 2. ЛОГИКА ---
-        function getDailyTarget() {
-            const epoch = new Date("2024-01-01");
-            const today = new Date();
-            const diffTime = Math.abs(today - epoch);
-            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
-            const index = diffDays % database.length;
-            return database[index];
-        }
+		// --- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ---
+		let target = null;
+		let selectedId = null;
+		let selectedName = null;
+		let panZoom = null;
+		let gameActive = false; // Изначально false, пока не выберут режим
+		let currentMode = 'daily'; // 'daily' или 'endless'
 
-        let target = getDailyTarget();
-        let selectedId = null;
-        let selectedName = null;
-        let panZoom = null;
-        let gameActive = true;
-
-        function getRegionByCountryId(id) {
-            const upperId = id.toUpperCase(); 
-            for (const [region, countries] of Object.entries(regionMap)) {
-                if (countries.includes(upperId)) return region;
-            }
-            return null;
-        }
-
-        window.onload = function() {
-            const todayStr = new Date().toISOString().split('T')[0];
-            const lastWon = localStorage.getItem('electle_last_won');
-
-            if (lastWon === todayStr) {
-                gameActive = false;
-                showWinModal(true);
-                document.getElementById('main-timer-box').style.display = 'block'; 
-            }
-
-            panZoom = svgPanZoom('#world-map', {
-				zoomEnabled: true, 
-				controlIconsEnabled: false, 
-				fit: true, 
-				center: true, 
-				minZoom: 1, 
-				maxZoom: 20,
-				preventMouseEventsDefault: false,
-				
-				// ДОБАВЛЯЕМ ОГРАНИЧЕНИЕ ПЕРЕМЕЩЕНИЯ
+		// --- ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ ---
+		window.onload = function() {
+			// Инициализируем карту, но скрываем за меню
+			panZoom = svgPanZoom('#world-map', {
+				zoomEnabled: true, controlIconsEnabled: false, fit: true, center: true, minZoom: 1, maxZoom: 20, preventMouseEventsDefault: false,
 				beforePan: function(oldPan, newPan) {
 					var sizes = this.getSizes();
-					var gutterWidth = sizes.width;
-					var gutterHeight = sizes.height;
-
-					// Вычисляем границы (насколько лево/право/верх/низ можно уйти)
-					// Здесь используется простой алгоритм "не дать уйти центру за пределы"
+					var gutterWidth = sizes.width, gutterHeight = sizes.height;
 					var leftLimit = -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterWidth / 2;
 					var rightLimit = sizes.width - gutterWidth / 2;
 					var topLimit = -((sizes.viewBox.y + sizes.viewBox.height) * sizes.realZoom) + gutterHeight / 2;
 					var bottomLimit = sizes.height - gutterHeight / 2;
-
-					var customPan = {};
-					customPan.x = Math.max(leftLimit, Math.min(rightLimit, newPan.x));
-					customPan.y = Math.max(topLimit, Math.min(bottomLimit, newPan.y));
-
-					return customPan;
+					return { x: Math.max(leftLimit, Math.min(rightLimit, newPan.x)), y: Math.max(topLimit, Math.min(bottomLimit, newPan.y)) };
 				}
 			});
 
-            document.getElementById('diagram-img').src = target.img;
+			// Настройка таймера
+			setInterval(updateCountdown, 1000);
+			updateCountdown();
 
-            // --- ФИКС ДЛЯ ОСТРОВОВ И МУЛЬТИ-КУСОЧКОВ ---
-            const paths = document.querySelectorAll('path');
-            
-            function handleCountrySelect(el) {
-				if (!gameActive) return;
-				if (el.classList.contains('correct') || el.classList.contains('wrong')) return;
+			// Навешивание событий на карту
+			setupMapEvents();
+		};
 
-				// 1. Снимаем выделение со ВСЕХ кусочков ПРЕДЫДУЩЕЙ страны
-				if (selectedId) {
-					const oldPieces = document.querySelectorAll(`path[id="${selectedId}"]`);
-					oldPieces.forEach(piece => {
-						// УДАЛИТЕ ОТСЮДА УСЛОВИЕ if(!piece.classList.contains('regional')...)
-						piece.classList.remove('selected'); 
-					});
+		// --- УПРАВЛЕНИЕ РЕЖИМАМИ ---
+		function startGame(mode) {
+			currentMode = mode;
+			
+			// Скрываем меню
+			document.getElementById('main-menu').classList.add('hidden');
+			
+			// Сбрасываем UI игры
+			resetGameStateUI();
+
+			if (mode === 'daily') {
+				target = getDailyTarget();
+				const todayStr = new Date().toISOString().split('T')[0];
+				const lastWon = localStorage.getItem('electle_last_won');
+
+				if (lastWon === todayStr) {
+					// Если сегодня уже выиграл Daily
+					gameActive = false;
+					document.getElementById('diagram-img').src = target.img;
+					showWinModal(true); 
+					document.getElementById('main-timer-box').style.display = 'block';
+				} else {
+					gameActive = true;
+					document.getElementById('diagram-img').src = target.img;
 				}
+			} else {
+				// Endless Mode
+				nextRound(); // Генерируем случайный уровень
+			}
+			
+			// Важно: пересчитать размеры карты после скрытия меню
+			setTimeout(() => panZoom.resize(), 350); 
+		}
 
-				// 2. Выделяем ВСЕ кусочки новой страны
-				selectedId = el.id;
-                selectedName = el.getAttribute('name') || el.id;
-                
-                // Находим все path с таким же ID (даже если это дубликаты)
-                const newPieces = document.querySelectorAll(`path[id="${selectedId}"]`);
-                newPieces.forEach(piece => piece.classList.add('selected'));
+		function goToMenu() {
+			document.getElementById('main-menu').classList.remove('hidden');
+			closeModal();
+		}
 
-                document.getElementById('selected-display').innerHTML = `Selected: <span>${selectedName}</span>`;
-            }
+		function nextRound() {
+			if (currentMode !== 'endless') return;
+			
+			// Выбираем случайную страну
+			const randomIndex = Math.floor(Math.random() * database.length);
+			target = database[randomIndex];
+			
+			resetGameStateUI();
+			gameActive = true;
+			document.getElementById('diagram-img').src = target.img;
+			
+			// Сообщаем игроку (опционально)
+			console.log("New Round:", target.country);
+		}
 
-            // Навешиваем обработчики
-            paths.forEach(p => {
-                p.addEventListener('click', () => handleCountrySelect(p));
+		// --- ЛОГИКА ---
+		function getDailyTarget() {
+			const epoch = new Date("2024-01-01");
+			const today = new Date();
+			const diffTime = Math.abs(today - epoch);
+			const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
+			const index = diffDays % database.length;
+			return database[index];
+		}
 
-                let startX, startY;
-                p.addEventListener('touchstart', (e) => {
-                    if (e.touches.length > 1) return; 
-                    startX = e.touches[0].clientX;
-                    startY = e.touches[0].clientY;
-                }, { passive: true });
+		function resetGameStateUI() {
+			selectedId = null;
+			document.querySelectorAll('path').forEach(p => p.classList.remove('correct', 'wrong', 'regional', 'selected'));
+			document.getElementById('year-input').value = ''; 
+			document.getElementById('year-input').disabled = false;
+			document.getElementById('submit-btn').disabled = false;
+			document.getElementById('history').innerHTML = '';
+			document.getElementById('win-modal').classList.remove('visible');
+			document.getElementById('main-timer-box').style.display = 'none';
+			document.getElementById('selected-display').innerHTML = "Selected: <span>—</span>";
+			if(panZoom) panZoom.reset();
+		}
 
-                p.addEventListener('touchend', (e) => {
-                    if (!startX || !startY) return;
-                    const endX = e.changedTouches[0].clientX;
-                    const endY = e.changedTouches[0].clientY;
-                    if (Math.abs(endX - startX) < 10 && Math.abs(endY - startY) < 10) {
-                        e.preventDefault(); 
-                        handleCountrySelect(p);
-                    }
-                    startX = null; startY = null;
-                });
-            });
+		function setupMapEvents() {
+			const paths = document.querySelectorAll('path');
+			paths.forEach(p => {
+				p.addEventListener('click', () => handleCountrySelect(p));
+				let startX, startY;
+				p.addEventListener('touchstart', (e) => {
+					if (e.touches.length > 1) return; 
+					startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+				}, { passive: true });
+				p.addEventListener('touchend', (e) => {
+					if (!startX || !startY) return;
+					const endX = e.changedTouches[0].clientX; const endY = e.changedTouches[0].clientY;
+					if (Math.abs(endX - startX) < 10 && Math.abs(endY - startY) < 10) {
+						e.preventDefault(); handleCountrySelect(p);
+					}
+					startX = null; startY = null;
+				});
+			});
+		}
 
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
-        };
+		function getRegionByCountryId(id) {
+			const upperId = id.toUpperCase(); 
+			for (const [region, countries] of Object.entries(regionMap)) {
+				if (countries.includes(upperId)) return region;
+			}
+			return null;
+		}
 
+		function handleCountrySelect(el) {
+			if (!gameActive) return;
+			if (el.classList.contains('correct') || el.classList.contains('wrong')) return;
 
-                function makeGuess() {
-            if (!gameActive) return;
+			if (selectedId) {
+				const oldPieces = document.querySelectorAll(`path[id="${selectedId}"]`);
+				oldPieces.forEach(piece => piece.classList.remove('selected'));
+			}
 
-            const yearInput = document.getElementById('year-input');
-            const statusText = document.getElementById('selected-display');
-            const userYear = parseInt(yearInput.value);
+			selectedId = el.id;
+			selectedName = el.getAttribute('name') || el.id;
+			
+			const newPieces = document.querySelectorAll(`path[id="${selectedId}"]`);
+			newPieces.forEach(piece => piece.classList.add('selected'));
 
-            if (!selectedId) { statusText.innerHTML = "<span style='color:#ff5555'>⚠ Select a country!</span>"; return; }
-            if (!userYear) { statusText.innerHTML = "<span style='color:#ff5555'>⚠ Enter year!</span>"; return; }
+			document.getElementById('selected-display').innerHTML = `Selected: <span>${selectedName}</span>`;
+		}
 
-            // Находим ВСЕ кусочки выбранной страны
-            const mapEls = document.querySelectorAll(`path[id="${selectedId}"]`);
-            const userRegion = getRegionByCountryId(selectedId);
-            
-            const isCountryCorrect = (selectedId.toLowerCase() === target.id.toLowerCase());
-            const isRegionCorrect = (userRegion === target.region);
-            const yearDiff = Math.abs(userYear - target.year);
+		function makeGuess() {
+			if (!gameActive) return;
 
-            // Снимаем синюю обводку со всех кусков
-            mapEls.forEach(el => el.classList.remove('selected'));
+			const yearInput = document.getElementById('year-input');
+			const statusText = document.getElementById('selected-display');
+			const userYear = parseInt(yearInput.value);
 
-            if (isCountryCorrect) {
-                // Красим ВСЕ куски правильной страны в зеленый
-                mapEls.forEach(el => el.classList.add('correct'));
-            } else if (isRegionCorrect) {
+			if (!selectedId) { statusText.innerHTML = "<span style='color:#ff5555'>⚠ Select a country!</span>"; return; }
+			if (!userYear) { statusText.innerHTML = "<span style='color:#ff5555'>⚠ Enter year!</span>"; return; }
+
+			const mapEls = document.querySelectorAll(`path[id="${selectedId}"]`);
+			const userRegion = getRegionByCountryId(selectedId);
+			
+			const isCountryCorrect = (selectedId.toLowerCase() === target.id.toLowerCase());
+			const isRegionCorrect = (userRegion === target.region);
+			const yearDiff = Math.abs(userYear - target.year);
+
+			mapEls.forEach(el => el.classList.remove('selected'));
+
+			if (isCountryCorrect) {
+				mapEls.forEach(el => el.classList.add('correct'));
+			} else if (isRegionCorrect) {
 				const regionCountries = regionMap[target.region];
 				if (regionCountries) {
 					regionCountries.forEach(countryId => {
 						const regionEls = document.querySelectorAll(`path[id="${countryId}"]`); 
 						regionEls.forEach(el => {
-							// ИСПРАВЛЕНИЕ ТУТ:
-							// Добавляем проверку: !el.classList.contains('wrong')
-							// Чтобы не перекрашивать уже ошибочные (серые) страны обратно в желтый
 							if (el.id !== selectedId && !el.classList.contains('correct') && !el.classList.contains('wrong')) {
 								el.classList.add('regional');
 							}
 						});
 					});
 				}
-				// Саму выбранную красим в серый
 				mapEls.forEach(el => el.classList.add('wrong'));
 			} else {
-                // Саму выбранную красим в серый (все куски)
-                mapEls.forEach(el => el.classList.add('wrong'));
-            }
+				mapEls.forEach(el => el.classList.add('wrong'));
+			}
 
-            // История
-            let yearIcon = yearDiff === 0 ? "✅" : (userYear < target.year ? "↑" : "↓");
-            let rowClass = "history-row";
-            if (isCountryCorrect && yearDiff === 0) rowClass += " win";
-            else if (isCountryCorrect || isRegionCorrect) rowClass += " close";
+			let yearIcon = yearDiff === 0 ? "✅" : (userYear < target.year ? "↑" : "↓");
+			let rowClass = "history-row";
+			if (isCountryCorrect && yearDiff === 0) rowClass += " win";
+			else if (isCountryCorrect || isRegionCorrect) rowClass += " close";
 
-            let icon = isCountryCorrect ? "🌍✅" : (isRegionCorrect ? "🌍🟡" : "🌍❌");
+			let icon = isCountryCorrect ? "🌍✅" : (isRegionCorrect ? "🌍🟡" : "🌍❌");
 
-            const historyLog = document.getElementById('history');
-            const row = document.createElement('div');
-            row.className = rowClass;
-            row.innerHTML = `<div>${selectedName}</div><div>${icon} | ${userYear} ${yearIcon}</div>`;
-            historyLog.prepend(row);
+			const historyLog = document.getElementById('history');
+			const row = document.createElement('div');
+			row.className = rowClass;
+			row.innerHTML = `<div>${selectedName}</div><div>${icon} | ${userYear} ${yearIcon}</div>`;
+			historyLog.prepend(row);
 
-            // Победа?
-            if (isCountryCorrect && yearDiff === 0) {
-                gameActive = false;
-                statusText.innerHTML = "<span style='color:#538d4e'>VICTORY!</span>";
-                localStorage.setItem('electle_last_won', new Date().toISOString().split('T')[0]);
-                document.getElementById('main-timer-box').style.display = 'block'; 
-                setTimeout(() => showWinModal(false), 1500);
-            } else if (isCountryCorrect) {
-                statusText.innerHTML = `<span style='color:#538d4e'>Correct Country! Fix the Year (${userYear} ${yearIcon})</span>`;
-                yearInput.select();
-                // Возвращаем выделение, чтобы игрок понимал, что страна всё еще в фокусе
-                mapEls.forEach(el => el.classList.add('selected')); 
-            } else {
-                selectedId = null;
-                statusText.innerHTML = "Selected: <span>—</span>";
-                yearInput.value = "";
-            }
-        }
+			if (isCountryCorrect && yearDiff === 0) {
+				gameActive = false;
+				statusText.innerHTML = "<span style='color:#538d4e'>VICTORY!</span>";
+				
+				// Сохраняем прогресс только для Daily
+				if (currentMode === 'daily') {
+					localStorage.setItem('electle_last_won', new Date().toISOString().split('T')[0]);
+					document.getElementById('main-timer-box').style.display = 'block'; 
+				}
+				
+				setTimeout(() => showWinModal(false), 1500);
+			} else if (isCountryCorrect) {
+				statusText.innerHTML = `<span style='color:#538d4e'>Correct Country! Fix the Year (${userYear} ${yearIcon})</span>`;
+				yearInput.select();
+				mapEls.forEach(el => el.classList.add('selected')); 
+			} else {
+				selectedId = null;
+				statusText.innerHTML = "Selected: <span>—</span>";
+				yearInput.value = "";
+			}
+		}
 
+		function showWinModal(instant) {
+			document.getElementById('win-country-name').innerText = target.country;
+			document.getElementById('win-year-val').innerText = target.year;
+			document.getElementById('submit-btn').disabled = true;
+			document.getElementById('year-input').disabled = true;
 
-        function showWinModal(instant) {
-            document.getElementById('win-country-name').innerText = target.country;
-            document.getElementById('win-year-val').innerText = target.year;
-            document.getElementById('submit-btn').disabled = true;
-            document.getElementById('year-input').disabled = true;
+			// Копируем историю
+			const historyRows = document.querySelectorAll('.history-row');
+			document.getElementById('attempt-count').innerText = historyRows.length;
+			const listContainer = document.getElementById('win-history-list');
+			listContainer.innerHTML = '';
+			for (let i = 0; i < historyRows.length; i++) {
+				const miniRow = document.createElement('div');
+				miniRow.className = 'mini-row';
+				miniRow.innerHTML = historyRows[i].innerHTML;
+				listContainer.appendChild(miniRow);
+			}
 
-            const historyRows = document.querySelectorAll('.history-row');
-            document.getElementById('attempt-count').innerText = historyRows.length;
-            const listContainer = document.getElementById('win-history-list');
-            listContainer.innerHTML = '';
-            
-            for (let i = 0; i < historyRows.length; i++) {
-                const miniRow = document.createElement('div');
-                miniRow.className = 'mini-row';
-                miniRow.innerHTML = historyRows[i].innerHTML;
-                listContainer.appendChild(miniRow);
-            }
-            
-            const modal = document.getElementById('win-modal');
-            modal.classList.add('visible');
-            if(instant) modal.style.transition = 'none';
-        }
+			// Логика отображения кнопки Next Round vs Таймер
+			const timerEls = document.querySelectorAll('.countdown-text');
+			const nextBtn = document.getElementById('next-round-btn');
+			const timerLabel = document.querySelector('.modal-content div[style*="text-transform: uppercase"]'); // Надпись "NEXT GAME IN"
 
-        function closeModal() {
-            document.getElementById('win-modal').classList.remove('visible');
-        }
+			if (currentMode === 'endless') {
+				nextBtn.style.display = 'block';
+				timerEls.forEach(el => el.style.display = 'none');
+				if(timerLabel) timerLabel.style.display = 'none';
+			} else {
+				nextBtn.style.display = 'none';
+				timerEls.forEach(el => el.style.display = 'block');
+				if(timerLabel) timerLabel.style.display = 'block';
+			}
+			
+			const modal = document.getElementById('win-modal');
+			modal.classList.add('visible');
+			if(instant) modal.style.transition = 'none';
+		}
 
-        function updateCountdown() {
-            const now = new Date();
-            const tomorrow = new Date(now);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            tomorrow.setHours(0, 0, 0, 0);
-            const diff = tomorrow - now;
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-            const timeStr = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-            document.querySelectorAll('.countdown-text').forEach(t => t.innerText = timeStr);
-        }
+		function closeModal() {
+			document.getElementById('win-modal').classList.remove('visible');
+		}
 
-        function devResetDaily() {
-            localStorage.removeItem('electle_last_won');
-            location.reload();
-        }
-        function devPlayRandom() {
-            const randomIndex = Math.floor(Math.random() * database.length);
-            target = database[randomIndex];
-            resetGameState();
-            console.log("TEST MODE:", target);
-            document.getElementById('selected-display').innerHTML = "<span style='color:orange'>⚠ TEST: " + target.country + "_" +target.year + "</span>";
-        }
-        function resetGameState() {
-            gameActive = true; selectedId = null;
-            document.querySelectorAll('path').forEach(p => p.classList.remove('correct', 'wrong', 'regional', 'selected'));
-            document.getElementById('diagram-img').src = target.img;
-            document.getElementById('year-input').value = ''; document.getElementById('year-input').disabled = false;
-            document.getElementById('submit-btn').disabled = false;
-            document.getElementById('history').innerHTML = '';
-            document.getElementById('win-modal').classList.remove('visible');
-            document.getElementById('main-timer-box').style.display = 'none';
-            if(panZoom) panZoom.reset();
-        }
+		function updateCountdown() {
+			const now = new Date();
+			const tomorrow = new Date(now);
+			tomorrow.setDate(tomorrow.getDate() + 1);
+			tomorrow.setHours(0, 0, 0, 0);
+			const diff = tomorrow - now;
+			const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+			const s = Math.floor((diff % (1000 * 60)) / 1000);
+			const timeStr = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+			document.querySelectorAll('.countdown-text').forEach(t => t.innerText = timeStr);
+		}
     </script>
 </body>
 </html>
