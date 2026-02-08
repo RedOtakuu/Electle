@@ -77,10 +77,10 @@
 
         path { fill: #d3d3d3; stroke: #111; stroke-width: 0.5px; transition: fill 0.3s; cursor: pointer; }
         path:hover { fill: #bbb; }
-        path.selected { fill: var(--accent-blue) !important; }
-        path.correct { fill: var(--correct-green) !important; }
-        path.wrong { fill: var(--wrong-red) !important; opacity: 0.4; }
-        path.regional { fill: var(--partial-yellow) !important; opacity: 0.8; }
+		path.regional { fill: var(--partial-yellow) !important; opacity: 0.8; }
+		path.wrong { fill: var(--wrong-red) !important; opacity: 0.8; }
+		path.selected { fill: var(--accent-blue) !important; }
+		path.correct { fill: var(--correct-green) !important; }
 
         .zoom-controls { position: absolute; bottom: 10px; right: 10px; display: flex; flex-direction: column; gap: 5px; }
         .zoom-btn { width: 35px; height: 35px; background: rgba(0,0,0,0.6); color: white; border: 1px solid #555; border-radius: 4px; cursor: pointer; font-size: 20px; display:flex; justify-content:center; align-items:center; }
@@ -5452,14 +5452,34 @@
             }
 
             panZoom = svgPanZoom('#world-map', {
-                zoomEnabled: true, 
-                controlIconsEnabled: false, 
-                fit: true, 
-                center: true, 
-                minZoom: 1, 
-                maxZoom: 20,
-                preventMouseEventsDefault: false 
-            });
+				zoomEnabled: true, 
+				controlIconsEnabled: false, 
+				fit: true, 
+				center: true, 
+				minZoom: 1, 
+				maxZoom: 20,
+				preventMouseEventsDefault: false,
+				
+				// ДОБАВЛЯЕМ ОГРАНИЧЕНИЕ ПЕРЕМЕЩЕНИЯ
+				beforePan: function(oldPan, newPan) {
+					var sizes = this.getSizes();
+					var gutterWidth = sizes.width;
+					var gutterHeight = sizes.height;
+
+					// Вычисляем границы (насколько лево/право/верх/низ можно уйти)
+					// Здесь используется простой алгоритм "не дать уйти центру за пределы"
+					var leftLimit = -((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom) + gutterWidth / 2;
+					var rightLimit = sizes.width - gutterWidth / 2;
+					var topLimit = -((sizes.viewBox.y + sizes.viewBox.height) * sizes.realZoom) + gutterHeight / 2;
+					var bottomLimit = sizes.height - gutterHeight / 2;
+
+					var customPan = {};
+					customPan.x = Math.max(leftLimit, Math.min(rightLimit, newPan.x));
+					customPan.y = Math.max(topLimit, Math.min(bottomLimit, newPan.y));
+
+					return customPan;
+				}
+			});
 
             document.getElementById('diagram-img').src = target.img;
 
@@ -5467,22 +5487,20 @@
             const paths = document.querySelectorAll('path');
             
             function handleCountrySelect(el) {
-                if (!gameActive) return;
-                if (el.classList.contains('correct') || el.classList.contains('wrong')) return;
-                
-                // 1. Снимаем выделение со ВСЕХ кусочков предыдущей страны
-                if (selectedId) {
-                    const oldPieces = document.querySelectorAll(`path[id="${selectedId}"]`);
-                    oldPieces.forEach(piece => {
-                        // Не убираем выделение, если уже покрашено в региональный/зеленый
-                        if(!piece.classList.contains('regional') && !piece.classList.contains('correct')) {
-                            piece.classList.remove('selected');
-                        }
-                    });
-                }
-                
-                // 2. Выделяем ВСЕ кусочки новой страны
-                selectedId = el.id;
+				if (!gameActive) return;
+				if (el.classList.contains('correct') || el.classList.contains('wrong')) return;
+
+				// 1. Снимаем выделение со ВСЕХ кусочков ПРЕДЫДУЩЕЙ страны
+				if (selectedId) {
+					const oldPieces = document.querySelectorAll(`path[id="${selectedId}"]`);
+					oldPieces.forEach(piece => {
+						// УДАЛИТЕ ОТСЮДА УСЛОВИЕ if(!piece.classList.contains('regional')...)
+						piece.classList.remove('selected'); 
+					});
+				}
+
+				// 2. Выделяем ВСЕ кусочки новой страны
+				selectedId = el.id;
                 selectedName = el.getAttribute('name') || el.id;
                 
                 // Находим все path с таким же ID (даже если это дубликаты)
@@ -5545,21 +5563,23 @@
                 // Красим ВСЕ куски правильной страны в зеленый
                 mapEls.forEach(el => el.classList.add('correct'));
             } else if (isRegionCorrect) {
-                const regionCountries = regionMap[target.region];
-                if (regionCountries) {
-                    regionCountries.forEach(countryId => {
-                        // Ищем все куски каждой страны региона
-                        const regionEls = document.querySelectorAll(`path[id="${countryId}"]`); 
-                        regionEls.forEach(el => {
-                            if (el.id !== selectedId && !el.classList.contains('correct')) {
-                                el.classList.add('regional');
-                            }
-                        });
-                    });
-                }
-                // Саму выбранную красим в серый (все куски)
-                mapEls.forEach(el => el.classList.add('wrong'));
-            } else {
+				const regionCountries = regionMap[target.region];
+				if (regionCountries) {
+					regionCountries.forEach(countryId => {
+						const regionEls = document.querySelectorAll(`path[id="${countryId}"]`); 
+						regionEls.forEach(el => {
+							// ИСПРАВЛЕНИЕ ТУТ:
+							// Добавляем проверку: !el.classList.contains('wrong')
+							// Чтобы не перекрашивать уже ошибочные (серые) страны обратно в желтый
+							if (el.id !== selectedId && !el.classList.contains('correct') && !el.classList.contains('wrong')) {
+								el.classList.add('regional');
+							}
+						});
+					});
+				}
+				// Саму выбранную красим в серый
+				mapEls.forEach(el => el.classList.add('wrong'));
+			} else {
                 // Саму выбранную красим в серый (все куски)
                 mapEls.forEach(el => el.classList.add('wrong'));
             }
