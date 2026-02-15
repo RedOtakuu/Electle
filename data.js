@@ -149,17 +149,64 @@ const WORLD_MAP_SVG = `
 		<path id="NP" name="Nepal" d="M1469 322.9l0.2 2.7 1.5 4.1-0.1 2.5-4.6 0.1-6.9-1.5-4.3-0.6-3.8-3.2-7.7-0.9-7.8-3.6-5.8-3.1-5.8-2.4 0.9-6 2.8-3 1.9-1.5 4.8 2 6.4 4.2 3.3 0.9 2.5 3.1 4.5 1.2 5 2.9 6.5 1.4 6.5 0.7z"></path>
 		<path id="BT" name="Bhutan" d="M1488.8 323.5l2.6 2.1 0.5 3.9-4.5 0.2-4.7-0.4-3.2 1-5.5-2.5-0.4-1.2 2.6-4.8 2.6-1.6 4.3 1.4 2.9 0.2 2.8 1.7z"></path>
 		<path id="PK" name="Pakistan" d="M1401.6 273.9l-3.8 5.4-5.7 1-8.5-1.6-2 2.8 3.3 5.6 2.9 4.4 5.1 3.1-3.8 3.7 1 4.6-3.9 6.5-2.2 6.5-4.5 6.7-6.5-0.5-4.9 6.8 4 2.8 1.4 5 3.5 3.2 1.8 5.5-12.1 0-3.2 4.3-4.2-1.6-2.2-4.6-4.9-4.9-10 1.2-9 0.1-7.6 0.9 1.1-7.4 7.5-3.4-0.9-2.9-2.7-1.1-1-5.6-5.7-2.8-2.8-3.9-3.2-3.4 9.6 3.3 5.3-1 3.4 0.8 0.9-1.4 3.9 0.6 6.6-2.7-0.8-5.4 2.3-3.7 4.1 0 0.2-1.7 4-0.9 2.1 0.6 1.8-1.8-1.1-3.9 1.4-3.8 3.1-1.7-3.1-4.2 5.2 0.2 0.9-2.3-0.8-2.5 2-2.7-1.4-3.2-1.9-2.7 2.4-2.8 5.3-1.3 5.9-0.8 2.4-1.1 2.9-0.8 4.7 3 2.9 5 9.5 2.5z"></path>
+		<path id="AF" name="Afghanistan" d="M1383 261.6l1.5 1.8-2.9 0.8-2.4 1.1-5.9 0.8-5.3 1.3-2.4 2.8 1.9 2.7 1.4 3.2-2 2.7 0.8 2.5-0.9 2.3-5.2-0.2 3.1 4.2-3.1 1.7-1.4 3.8 1.1 3.9-1.8 1.8-2.1-0.6-4 0.9-0.2 1.7-4.1 0-2.3 3.7 0.8 5.4-6.6 2.7-3.9-0.6-0.9 1.4-3.4-0.8-5.3 1-9.6-3.3 3.9-5.8-1.1-4.1-4.3-1.1-1.2-4.1-2.7-5.1 1.6-3.5-2.5-1 0.5-4.7 0.6-8 5.9 2.5 3.9-0.9 0.4-2.9 4-0.9 2.6-2-0.2-5.1 4.2-1.3 0.3-2.2 2.9 1.7 1.6 0.2 3 0 4.3 1.4 1.8 0.7 3.4-2 2.1 1.2 0.9-2.9 3.2 0.1 0.6-0.9-0.2-2.6 1.7-2.2 3.3 1.4-0.1 2 1.7 0.3 0.9 5.4 2.7 2.1 1.5-1.4 2.2-0.6 2.5-2.9 3.8 0.5 5.4 0z"></path>
+		<path id="BD" name="Bangladesh" d="M1500.6 360.3l0.6 4.6-2.1-1 1.1 5.2-2.1-3.3-0.8-3.3-1.5-3.1-2.8-3.7-5.2-0.3 0.9 2.7-1.2 3.5-2.6-1.3-0.6 1.2-1.7-0.7-2.2-0.6-1.6-5.3-2.6-4.8 0.3-3.9-3.7-1.7 0.9-2.3 3-2.4-4.6-3.4 1.2-4.4 4.9 2.8 2.7 0.3 1.2 4.5 5.4 0.9 5.1-0.1 3.4 1.1-1.6 5.4-2.4 0.4-1.2 3.6 3.6 3.4 0.3-4.2 1.5 0 4.4 10.2z"></path>
+		<path id="MM" name="Myanmar" d="M1548.4 364.2l-4.1 4.2-0.8 2.3-3 1.5-2.8 2.8-3.9 0.3-1.5 6.9-2.2 1.2 3.5 5.6 4.1 4.7 2.9 4.3-1.4 5.5-1.8 1.2 1.8 3.2 4.3 5.1 1 3.6 0.2 3 2.7 5.9-2.6 6-2.2 6.6-0.9-4.8 1.3-4.9-2.2-3.8-0.2-7-2.6-3.4-2.7-7.6-2-8.1-3.1-5.4-3.2 3.3-5.8 4.5-3.3-0.5-3.6-1.5 0.9-8-2-6-5.3-7.4 0.3-2.3-3.4-0.9-4.6-5.2-1.1-5.2 2.1 1-0.6-4.6 2.5-1.5-1-2.7 1-2.2-0.9-6.7 4.6 1.5 1.6-5.3-0.3-3.1 2-5.4-0.9-3.7 6.2-4.4 4.2 1.1-1.4-3.9 1.7-1.2-1-2.4 3.1-0.5 2.7 3.8 2.7 1.5 1.3 4.9 0.9 5.3-4.2 5.4 0.7 7.6 5.6-1.1 2.4 5.9 3.7 1.3-0.8 5.3 4.5 2.4 2.6 1.2 3.8-1.9 0.5 2.7z"></path>
+		<path id="TH" name="Thailand" d="M1577.5 410.2l-5.3-0.9-7.1 1.2-3.1 5.3 2.1 7.8-5.3-3-4.8 0.2 0.3-5.1-4.9 0 0.2 7.1-2.2 9.4-1.4 5.7 0.7 4.6 3.7 0.2 2.7 5.9 1.3 5.5 3.4 3.7 3.4 0.7 3.1 3.4-1.7 2.6-3.7 0.8-0.6-3.3-4.8-2.8-0.9 1.1-2.3-2.4-1.2-3.2-3.2-3.6-2.9-3.1-0.7 3.8-1.3-3.6 0.4-4 1.2-6.1 2.2-6.6 2.6-6-2.7-5.9-0.2-3-1-3.6-4.3-5.1-1.8-3.2 1.8-1.2 1.4-5.5-2.9-4.3-4.1-4.7-3.5-5.6 2.2-1.2 1.5-6.9 3.9-0.3 2.8-2.8 3-1.5 2.7 2 0.9 3.9 3.8 0.3-0.4 6.7 1 5.8 5.3-3.8 1.9 1.1 3.2-0.2 0.8-2.2 4.3 0.4 5 5.2 1.3 6.4 5.3 5.6 0.4 5.4-1.5 2.9z"></path>
+		<path id="MY" name="Malaysia" d="M 1564.3 461.9 1565.7 462.5 1569.2 466.4 1571.7 470.7 1572.3 475 1571.8 477.9 1572.4 480.1 1572.9 483.9 1575 485.7 1577.3 491.4 1577.3 493.5 1573.3 494 1567.8 489.2 1561 484.1 1560.2 480.8 1556.8 476.5 1555.8 471.2 1553.6 467.7 1554 463 1552.6 460.3 1553.5 459.2 1558.3 462 1558.9 465.3 1562.6 464.5 1564.3 461.9 Z"></path>
+		<path id="MY" name="Malaysia" d="M 1654.1 475.3 1649.1 474.2 1642.6 474.2 1640.9 481.5 1638.8 483.7 1636.2 492.6 1631.6 494 1626.2 492.2 1623.5 492.8 1620.2 496 1616.6 495.6 1612.9 496.9 1609 493.2 1608 488.9 1612.2 491.1 1616.5 489.9 1617.5 484.5 1619.9 483.3 1626.7 481.9 1630.5 476.8 1633.1 472.8 1635.9 476.1 1637 473.9 1639.7 474.1 1639.8 470 1639.9 466.8 1644 462.4 1646.6 457.4 1648.9 457.3 1652 460.6 1652.4 463.4 1656.2 465.2 1661 467.1 1660.8 469.6 1657 469.9 1658.1 473.1 1654.1 475.3 Z"></path>
+		<path id="KH" name="Cambodia"d="M1589.8 410.6l1.8 4.3 0.1 7.7-9 5 2.8 3.8-5.9 0.5-4.6 2.6-4.8-0.9-2.6-3.4-3.5-6.6-2.1-7.8 3.1-5.3 7.1-1.2 5.3 0.9 5 2.5 2-4.4 5.3 2.3z"></path>
+		<path id="LA" name="Laos" d="M1589.8 410.6l-5.3-2.3-2 4.4-5-2.5 1.5-2.9-0.4-5.4-5.3-5.6-1.3-6.4-5-5.2-4.3-0.4-0.8 2.2-3.2 0.2-1.9-1.1-5.3 3.8-1-5.8 0.4-6.7-3.8-0.3-0.9-3.9-2.7-2 0.8-2.3 4.1-4.2 0.8 1.5 3 0.2-2-7.4 2.7-0.9 4 5.1 3.5 5.8 6.8 0 3 5.6-3.3 1.7-1.2 2.3 7.3 3.9 5.7 7.6 4.4 5.6 4.9 4.5 2 4.5-0.2 6.4z"></path>
+		<path id="VN" name="Vietnam" d="M1586.5 363.5l-6.5 5.4-3.7 6.1-0.6 4.5 5.3 6.7 6.5 8.4 5.7 4 4.1 5.1 4 11.9 0.4 11.3-4.3 4.2-6.1 4.2-4.2 5.3-6.6 6-2.3-4.1 1.2-4.4-4.4-3.6 4.6-2.6 5.9-0.5-2.8-3.8 9-5-0.1-7.7-1.8-4.3 0.2-6.4-2-4.5-4.9-4.5-4.4-5.6-5.7-7.6-7.3-3.9 1.2-2.3 3.3-1.7-3-5.6-6.8 0-3.5-5.8-4-5.1 2.7-1.6 4.4 0.1 5.3-0.8 4.1-3.4 3.1 2.4 5.3 1.2-0.3 3.7 3.1 2.6 5.9 1.7z"></path>
+		<path id="PH" name="Philippines" d="M 1700.5 447.8 1701.4 452.1 1702 455.7 1700.4 461.5 1697.9 455 1695.5 458.3 1697.6 463 1696.2 466 1689.3 462.3 1687.4 457.6 1688.9 454.6 1685.1 451.5 1683.5 454.2 1680.9 453.9 1676.9 457.5 1675.9 455.6 1677.7 450.2 1681.1 448.4 1684 446 1686.2 448.9 1690.4 447.2 1691.1 444.3 1695.1 444.1 1694.3 439.2 1699.2 442.2 1699.9 445.4 1700.5 447.8 Z"></path>
+		<path id="PH" name="Philippines" d="M 1685.9 435.8 1684.1 437.9 1682.7 442 1681.1 443.9 1677.2 439.5 1678.2 437.7 1679.5 435.9 1679.7 432 1682.8 431.6 1682.3 435.9 1685.9 429.7 1685.9 435.8 Z"></path>
+		<path id="PH" name="Philippines" d="M 1655.6 442 1648.5 448.1 1650.9 443.6 1654.7 439.6 1657.7 435.2 1660 428.8 1661.6 434.1 1658.1 437.6 1655.6 442 Z"></path>
+		<path id="PH" name="Philippines" d="M 1673.1 425.5 1676.7 427.5 1680.2 427.5 1680.4 430.1 1678.1 432.9 1674.7 434.8 1674.2 431.8 1674.3 428.5 1673.1 425.5 Z"></path>
+		<path id="PH" name="Philippines" d="M 1693.2 423.7 1695.6 430.9 1691.1 429.2 1691.4 431.4 1693.2 435.3 1690.6 436.8 1690 432.2 1688.2 431.9 1687 428 1690.3 428.5 1690 426.1 1686 421.2 1691.4 421.3 1693.2 423.7 Z"></path>
+		<path id="PH" name="Philippines" d="M 1670.2 417.9 1669.3 423.5 1666.6 420.3 1663.1 415.4 1667.9 415.6 1670.2 417.9 Z"></path>
+		<path id="PH" name="Philippines" d="M 1663.7 383 1667.5 384.9 1668.9 383.2 1669.7 384.8 1669.3 387.5 1671.9 392.1 1671.3 397.4 1668.4 399.5 1668.3 404.7 1670.3 409.8 1673.3 410.5 1675.7 409.8 1683.2 413.3 1683.1 416.8 1685.2 418.4 1684.9 421.3 1680.2 418.2 1677.7 414.8 1676.5 417.2 1672.5 413.3 1667.5 414.3 1664.5 412.9 1664.4 410.2 1666 408.6 1664.1 407.1 1663.7 409.4 1660.4 405.7 1659.1 402.9 1658 396.8 1660.6 398.9 1659.5 388.8 1660.3 383 1663.7 383 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1667.5 567.6 1665.1 567.7 1658 563.2 1663.4 561.9 1666.2 563.9 1668 565.8 1667.5 567.6 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1692.3 558.9 1692.8 560.2 1692.7 562.1 1688.6 566.9 1683.6 568.3 1683 567.6 1683.7 565.4 1686.5 561.5 1692.3 558.9 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1652.7 553.8 1654.6 555.5 1658.2 555 1659.4 557.7 1652.7 559 1648.8 559.9 1645.7 559.8 1647.9 556.1 1651.1 556.1 1652.7 553.8 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1681 553.8 1679.9 557.4 1671.3 559.2 1663.8 558.4 1664 556 1668.6 554.7 1672 556.6 1675.8 556.1 1681 553.8 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1600.8 545.3 1611.6 546 1613 543.3 1623.3 546.4 1625.1 550.6 1633.5 551.8 1640.2 555.6 1633.6 558 1627.5 555.4 1622.4 555.6 1616.6 555.1 1611.4 554 1605 551.5 1600.9 550.9 1598.5 551.7 1588.3 549 1587.5 546.3 1582.4 545.8 1586.6 539.7 1593.4 540.1 1597.8 542.6 1600.2 543.1 1600.8 545.3 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1748.7 541.7 1745.5 546.1 1745.3 541.3 1746.4 539 1747.7 536.8 1748.9 538.7 1748.7 541.7 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1707.3 524 1705.1 526.2 1701.3 525 1700.3 522.2 1706 521.9 1707.3 524 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1725.7 521.7 1727.5 526.6 1722.9 523.9 1718.2 523.4 1714.9 523.8 1711 523.6 1712.5 520.1 1719.5 519.8 1725.7 521.7 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1785.5 518.5 1784.5 539.4 1782.9 560.4 1778.3 555.1 1772.7 553.8 1771.2 555.6 1764 555.8 1766.8 550.6 1770.5 548.8 1769.5 541.8 1767.2 536.5 1756.5 531 1751.9 530.5 1743.6 524.5 1741.8 527.7 1739.6 528.2 1738.5 525.9 1738.6 523.1 1734.4 519.9 1740.6 517.6 1744.6 517.7 1744.2 516 1735.9 516 1733.7 512.2 1728.7 511 1726.4 507.8 1734 506.3 1736.9 504.2 1746 506.8 1746.9 509.2 1748.2 519.6 1753.9 523.4 1758.9 516.6 1765.5 512.8 1770.5 512.8 1775.3 515 1779.4 517.3 1785.5 518.5 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1696.4 492.7 1691.9 499.1 1687.6 500.3 1682.2 499.1 1672.7 499.4 1667.8 500.3 1667 505.2 1672 510.9 1675.1 508 1685.7 505.8 1685.2 508.7 1682.7 507.8 1680.2 511.6 1675.1 514.1 1680.2 522.3 1679.1 524.5 1683.9 531.9 1683.6 536.1 1680.5 538 1678.4 535.7 1681.4 530.5 1675.7 533 1674.4 531.2 1675.2 528.7 1671.3 524.9 1672 518.7 1668.1 520.6 1668.3 528.1 1668.1 537.3 1664.4 538.2 1662.1 536.4 1664 530.5 1663.4 524.3 1661 524.2 1659.4 519.8 1661.9 515.6 1662.8 510.5 1665.8 500.8 1666.9 498.2 1671.7 493.4 1676.2 495.3 1683.3 496.2 1689.8 495.9 1695.4 491.3 1696.4 492.7 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1716 494.6 1715.7 500.2 1712.8 499.5 1711.9 503.4 1714.2 506.8 1712.6 507.6 1710.4 503.5 1708.7 495.3 1709.7 490.2 1711.5 487.9 1712 491.4 1715.4 491.9 1716 494.6 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1608 488.9 1609 493.2 1612.9 496.9 1616.6 495.6 1620.2 496 1623.5 492.8 1626.2 492.2 1631.6 494 1636.2 492.6 1638.8 483.7 1640.9 481.5 1642.6 474.2 1649.1 474.2 1654.1 475.3 1651.1 481.1 1655.5 487.1 1654.6 490.1 1661 496 1654.3 496.8 1652.5 501.2 1652.7 507 1647.2 511.4 1646.8 517.8 1644.3 527.6 1643.6 525.3 1637 528.2 1634.9 524.3 1630.9 523.9 1628.1 521.8 1621.3 524.2 1619.4 521 1615.6 521.4 1611 520.7 1610.4 512.1 1607.6 510.3 1604.9 504.8 1604.1 499.2 1604.7 493.2 1608 488.9 Z"></path>
+		<path id="ID" name="Indonesia" d="M 1585.2 539.4 1579 539.5 1574.5 534.2 1567.4 528.9 1565.1 525 1561 519.8 1558.3 515 1554.1 506 1549.2 500.6 1547.5 495.1 1545.3 490.1 1540.1 486.1 1537 480.6 1532.6 477 1526.4 469.9 1525.8 466.6 1529.4 466.9 1538.3 468.1 1543.5 474.4 1548.1 478.8 1551.3 481.4 1556.8 488.3 1562.6 488.4 1567.4 492.8 1570.8 498.2 1575.1 501.2 1572.8 506.4 1576.1 508.6 1578.1 508.8 1579 513.3 1580.9 516.8 1585 517.4 1587.6 521.5 1585.9 529.5 1585.2 539.4 Z"></path>
+		<path id="IR" name="Iran" d="M1229 253.2l1.8-0.2 5.3-4.7 1.9-0.5 1.9 1.9-1.2 3.1 3.9 3.4 1.3-0.4 2.5 4.8 5.3 1.3 4.3 3.2 7.7 1.1 8-1.7 0.2-1.5 4.4-1.2 3-3.7 3.6 0.2 2-1.2 3.9 0.6 6.6 3.3 4.3 0.7 7.3 5.6 4 0.3 1.7 5.3-0.6 8-0.5 4.7 2.5 1-1.6 3.5 2.7 5.1 1.2 4.1 4.3 1.1 1.1 4.1-3.9 5.8 3.2 3.4 2.8 3.9 5.7 2.8 1 5.6 2.7 1.1 0.9 2.9-7.5 3.4-1.1 7.4-10.6-1.9-6.2-1.5-6.3-0.8-3.3-7.9-2.8-1.1-4.1 1.1-5.1 3.1-7-2.1-6.1-5-5.5-1.8-4.4-6.1-5.2-8.5-2.8 1-3.7-2.1-1.7 2.5-3.5-3.4-0.5-3.4-1.7 0 0.2-4.7-3.5-4.8-7.1-3.6-4.6-6.1 0.5-5 2.3-2.2-0.9-3.7-3.8-2-4.7-7.6-3.8-5.1 0.7-2-2.9-7.3 3.3-1.9 1.2 2.5 3.2 2.9 3.8 0.9z"></path>
+		<path id="TR" name="Turkey" d="M 1201.7 235.3 1207.2 235 1212.8 238.2 1214.1 240.4 1214.2 243.5 1218.4 245.1 1220.8 246.9 1217.5 248.8 1220.4 256.1 1219.7 258.1 1223.5 263.2 1221.1 264.3 1219 262.7 1212.7 261.8 1210.6 262.8 1204.7 263.8 1201.8 263.7 1196.1 266.1 1191.7 266.1 1188.7 264.9 1183.1 266.7 1181.2 265.5 1181.4 269 1180.2 270.4 1178.9 271.8 1176.6 268.9 1178.3 266.5 1175.1 267.1 1170.5 265.6 1167.3 269.3 1159.3 270 1154.6 266.6 1148.9 266.4 1147.9 269 1144.3 269.8 1138.9 266.4 1133.1 266.5 1129.3 260.1 1125.1 256.6 1127.1 251.6 1123.5 248.5 1128.6 242.4 1136.6 242.2 1138.2 237.3 1148.2 238.2 1153.8 234.1 1159.6 232.3 1168.1 232.1 1177.9 236.6 1185.8 239.1 1191.6 238.1 1196.2 238.7 1201.7 235.3 Z"></path>
+		<path id="TR" name="Turkey" d="M 1121.9 239.9 1123.1 239.2 1124.2 235.2 1121.5 233.5 1126.5 231.5 1131.1 232.3 1132 234.8 1136.8 236.8 1136.1 238.4 1129.9 238.7 1127.9 240.7 1124 244.1 1122 241.2 1121.9 239.9 Z"></path>
+		<path id="SY" name="Syria" d="M1195 287.5l-9.7 6.9-6.3-2.6-0.1 0 0.6-1-0.4-2.6 0.9-3.5 2.7-2.5-1.2-2.5-2.5-0.3-1.1-4.9 1-2.7 1.3-1.4 1.2-1.4-0.2-3.5 1.9 1.2 5.6-1.8 3 1.2 4.4 0 5.7-2.4 2.9 0.1 5.9-1-2.1 4-2.7 1.6 1.2 4.7-1 7.7-11 6.7z"></path>
+		<path id="LB" name="Lebanon" d="M1179.1 288.2l-1.4 0.1-0.4 1.1-1.8 0 1.3-5.3 2.2-4.5 0-0.2 2.5 0.3 1.2 2.5-2.7 2.5-0.9 3.5z"></path>
+		<path id="PS" name="Palestine" d="M1178.3 293.8l0.4 4-0.6 1.9-2.5 0.8 0.1-1.7 1.3-0.9-1.5-0.7 0.7-4.2 2.1 0.8z"></path>
+		<path id="IL" name="Israel" d="M1179.1 288.2l0.4 2.6-0.6 1 0.1 0-0.7 2-2.1-0.8-0.7 4.2 1.5 0.7-1.3 0.9-0.1 1.7 2.5-0.8 0.4 2.5-1.8 10.2-0.7-1.6-3.9-9.4 1.4-2.1-0.4-0.4 1.1-3 0.6-4.8 0.6-1.7 0.1 0 1.8 0 0.4-1.1 1.4-0.1z"></path>
+		<path id="IQ" name="Iraq" d="M1223.5 263.2l4.7 7.6 3.8 2 0.9 3.7-2.3 2.2-0.5 5 4.6 6.1 7.1 3.6 3.5 4.8-0.2 4.7 1.7 0 0.5 3.4 3.5 3.4-3.3-0.3-3.7-0.6-3.3 6.2-10.2-0.5-16.8-12.9-8.6-4.5-6.8-1.8-3.1-7.8 11-6.7 1-7.7-1.2-4.7 2.7-1.6 2.1-4 2.1-1 6.3 0.9 2.1 1.6 2.4-1.1z"></path>
+		<path id="JO" name="Jordan" d="M1198.1 295.3l-0.9 1-10.4 3.2 6 6.5-1.6 1-0.7 2.2-4.1 0.9-1.1 2.3-2.1 2-6.2-1.1-0.3-0.9 1.8-10.2-0.4-2.5 0.6-1.9-0.4-4 0.7-2 6.3 2.6 9.7-6.9 3.1 7.8z"></path>
+		<path id="SA" name="Saudi Arabia" d="M1240.5 315l5 0.6 1.7 3.1 3.9-0.2 2.7 5.6 2.9 1.4 1.2 2.3 4 2.7 0.7 2.6-0.4 2.2 0.9 2.1 1.8 1.8 0.9 2.1 1 1.6 1.8 1.3 1.5-0.5 1.3 2.5 0.3 1.4 2.7 6.6 16.9 3.2 1-1.4 3 4.6-2.6 12.8-16.3 6.4-15.9 2.5-5 2.9-3.5 6.7-2.6 1.1-1.5-2.1-2.1 0.3-5.5-0.7-1.1-0.6-6.4 0.1-1.5 0.6-2.4-1.6-1.3 3.1 0.8 2.7-2.4 2.1-0.9-2.8-1.8-1.9-0.5-2.6-3.1-2.3-3.3-5.4-1.9-5.2-4.1-4.4-2.5-1.1-4.1-6.1-0.9-4.4 0-3.8-3.6-7.2-2.8-2.5-3-1.3-2.1-3.7 0.2-1.4-1.8-3.4-1.7-1.4-2.5-4.8-3.8-5.1-3.1-4.4-2.7 0 0.5-3.5 0.1-2.3 0.4-2.6 6.2 1.1 2.1-2 1.1-2.3 4.1-0.9 0.7-2.2 1.6-1-6-6.5 10.4-3.2 0.9-1 6.8 1.8 8.6 4.5 16.8 12.9 10.2 0.5z"></path>
+		<path id="BH" name="Bahrain" d="M1264.1 333.3l0.3 0.1 0.2-0.1 0.4 0.7-0.1 0.2 0.1 0.9 0 0.7-0.2 0.4-0.1-0.4-0.6-0.8 0.1-0.4-0.2-0.7 0-0.4 0.1-0.2z"></path>
+		<path id="AE" name="United Arab Emirates" d="M1296.2 336.7l1.3 5.1-2.8 0 0 4.2 1.1 0.9-2.4 1.3 0.2 2.6-1.3 2.6 0 2.6-1 1.4-16.9-3.2-2.7-6.6-0.3-1.4 0.9-0.4 0.4 1.8 4.2-1 4.6 0.2 3.4 0.2 3.3-4.4 3.7-4.1 3-4 1.3 2.2z"></path>
+		<path id="QA" name="Qatar"d="M1270.1 343.7l-1.5 0.5-1.8-1.3-0.8-4.7 1.1-3.3 1.5-0.7 1.8 2 0.5 3.7-0.8 3.8z"></path>
+		<path id="YE" name="Yemen" d="M1283.8 394.9l-4 1.7-0.9 2.9 0 2.2-5.4 2.7-8.8 3-4.7 4.5-2.5 0.4-1.7-0.4-3.2 2.7-3.5 1.2-4.7 0.3-1.4 0.4-1.1 1.7-1.5 0.5-0.8 1.6-2.8-0.2-1.7 0.9-4-0.3-1.6-3.8 0-3.5-1-1.9-1.3-4.7-1.8-2.6 1.1-0.4-0.7-2.9 0.6-1.2-0.4-2.8 2.4-2.1-0.8-2.7 1.3-3.1 2.4 1.6 1.5-0.6 6.4-0.1 1.1 0.6 5.5 0.7 2.1-0.3 1.5 2.1 2.6-1.1 3.5-6.7 5-2.9 15.9-2.5 5.2 10.6 2.2 4.5z"></path>
+		<path id="OM" name="Oman" d="M 1283.8 394.9 1281.6 390.4 1276.4 379.8 1292.7 373.4 1295.3 360.6 1292.3 356 1292.3 353.4 1293.6 350.8 1293.4 348.2 1295.8 346.9 1294.7 346 1294.7 341.8 1297.5 341.8 1300.5 346.2 1303.8 348.5 1307.9 349.4 1311.3 350.5 1314.2 354.2 1315.9 356.3 1317.9 357.2 1318.1 358.6 1316.4 362.4 1315.7 364.2 1313.5 366.3 1311.8 370.7 1309.3 370.3 1308.3 371.9 1307.6 375.1 1308.7 379.4 1308.2 380.2 1305.7 380.2 1302.4 382.6 1302.1 385.7 1300.9 387.1 1297.4 387 1295.4 388.6 1295.6 391.2 1293 393 1289.9 392.4 1286.3 394.6 1283.8 394.9 Z"></path>
+		<path id="OM" name="Oman" d="M 1296.2 336.7 1294.9 334.5 1296.3 332.4 1297 332.9 1296.8 335.6 1296.2 336.7 Z"></path>
 	</svg>
 `;
 
 const regionMap = {
 	"Western Europe": ["DE", "FR", "IT", "MT", "LU", "BE", "NL", "UK", "DK", "NO", "FI", "SE", "IS", "ES", "PT", "IE", "SW", "AT"],
-	"Eastern Europe": ["RU", "UA", "BY", "MD", "EE", "LV", "LT", "PL", "CZ", "SK", "HU", "RO", "BG", "GR", "MK", "AL", "ME", "RS", "BA", "XK", "HR", "SI", "GE", "AM", "AZ"],
+	"Eastern Europe": ["RU", "UA", "BY", "MD", "EE", "LV", "LT", "PL", "CZ", "SK", "HU", "RO", "BG", "GR", "MK", "AL", "ME", "RS", "BA", "XK", "HR", "SI"],
 	"North America": ["US", "CA", "MX", "HN", "BZ", "BZ", "SV", "GT", "NI", "PA", "CR", "CU", "JM", "HT", "DO"],
 	"South America": ["CO", "VE", "EC", "PE", "BO", "CL", "AR", "PY", "UY", "BR", "GY", "SR"],
 	"Central Asia": ["KZ", "UZ", "KG", "TJ", "TM"],
 	"East Asia": ["CH", "MN", "TW", "KP", "JP"],
-	"Indostan": ["LK", "IN", "NP", "BT", "PK"],
+	"South Asia": ["LK", "IN", "NP", "BT", "PK", "AF", "BD", "IR"],
+	"Southeast Asia": ["MM", "TH", "MY", "KH", "LA", "VN", "PH", "ID"],
+	"Western Asia": ["GE", "AM", "AZ", "TR", "SY", "LB", "PS", "IS", "IQ", "JO", "SA", "BH", "AE", "QT", "YE", "OM"],
 };
 
 const database = [
@@ -9267,6 +9314,7 @@ const database = [
 		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Assemblee_nationale_bhoutan_2008.svg?width=600",
 		"wiki_link": "https://en.wikipedia.org/wiki/2008_Bhutanese_National_Assembly_election"
 	},
+	
 	{
 		"ids": ["pk"],
 		"country": "Pakistan",
@@ -9274,5 +9322,1524 @@ const database = [
 		"region": "Indostan",
 		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/16th_National_Assembly_(Pakistan).svg?width=600",
 		"wiki_link": "https://en.wikipedia.org/wiki/2024_Pakistani_general_election#Results"
+	},
+	{
+		"ids": ["pk"],
+		"country": "Pakistan",
+		"year": 2018,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pakistan_National_Assembly_2018_with_reserved.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2018_Pakistani_general_election#Results"
+	},
+	{
+		"ids": ["pk"],
+		"country": "Pakistan",
+		"year": 2013,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/PakistanElection2013Diagram.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2013_Pakistani_general_election#Results"
+	},
+	{
+		"ids": ["pk"],
+		"country": "Pakistan",
+		"year": 2008,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Assembly_of_Pakistan_2008.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2008_Pakistani_general_election#Results"
+	},
+	{
+		"ids": ["pk"],
+		"country": "Pakistan",
+		"year": 2002,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pakistan_National_Assembly_2002.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2002_Pakistani_general_election#Results"
+	},
+	{
+		"ids": ["pk"],
+		"country": "Pakistan",
+		"year": 1985,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pakistan_National_Assembly_1985.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1985_Pakistani_general_election#Results"
+	},
+	{
+		"ids": ["pk"],
+		"country": "Pakistan",
+		"year": 1977,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pakistan_National_Assembly_1977.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1977_Pakistani_general_election#Results"
+	},
+	{
+		"ids": ["pk"],
+		"country": "Pakistan",
+		"year": 1977,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pakistan_National_Assembly_1977.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1977_Pakistani_general_election#Results"
+	},
+	{
+		"ids": ["pk"],
+		"country": "Pakistan",
+		"year": 1970,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pakistan_National_Assembly_1970.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1970_Pakistani_general_election#Results"
+	},
+	{
+		"ids": ["pk"],
+		"country": "Pakistan",
+		"year": 1955,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/1955_Pakistani_Constituent_Assembly_diagram.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1955_Pakistani_Constituent_Assembly_election#Results"
+	},
+	{
+		"ids": ["pk"],
+		"country": "Pakistan",
+		"year": 1947,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pakistan_Constituent_Assembly_1947.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1947_Pakistani_Constituent_Assembly_election#Results"
+	},
+	
+	{
+		"ids": ["af"],
+		"country": "Afghanistan",
+		"year": 2010,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Wolesi_Jirga_2010.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2005_Afghan_parliamentary_election#Results"
+	},
+	{
+		"ids": ["af"],
+		"country": "Afghanistan",
+		"year": 2005,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Wolesi_Jirga_2005.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2010_Afghan_parliamentary_election#Party_results"
+	},
+	{
+		"ids": ["af"],
+		"country": "Afghanistan",
+		"year": 1988,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/1988_Afghan_parliamentary_election.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1988_Afghan_parliamentary_election#Results"
+	},
+	
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 2026,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bangladesh_13th_Jatiya_Sangsad_Partywise_2026.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2026_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 2024,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/2024BDelectionresults.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2024_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 2018,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Jatiya_Sangsad_2018.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2018_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 2014,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bangladesh_Jatiya_Sangsad_2014.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2014_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 2008,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bangladesh_Jatiya_Sangsad_by_party_2008.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2008_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 2001,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Jatiya_Sangsad_2001.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2001_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 1996,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bangladesh_June_Parliament_1996.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/June_1996_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 1996,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bangladesh_Jatiya_Sangsad_February_1996.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/February_1996_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 1991,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Jatiya_Sangsad_1991.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1991_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 1988,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bangladesh_Parliament_1988.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1988_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 1986,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bangladesh_Jatiya_Sangsad_1986.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1986_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 1979,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bangladesh_Jatiya_Sangsad_1979.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1979_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 1973,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bangladesh_Jatiya_Sangsad_1973.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1973_Bangladeshi_general_election#Results"
+	},
+	{
+		"ids": ["bd"],
+		"country": "Bangladesh",
+		"year": 1970,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/1970_East_Pakistan_Provincial_Assembly.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1970_East_Pakistan_Provincial_Assembly_election#Results"
+	},
+	
+	{
+		"ids": ["mm"],
+		"country": "Myanmar",
+		"year": 2026,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Myanmar_Amyotha_Hluttaw_2026.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2025%E2%80%9326_Myanmar_general_election?ysclid=mlnvyaxqo6644645283#Results"
+	},
+	{
+		"ids": ["mm"],
+		"country": "Myanmar",
+		"year": 2020,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Myanmar_House_of_Nationalities_2020.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2020_Myanmar_general_election#Results"
+	},
+	{
+		"ids": ["mm"],
+		"country": "Myanmar",
+		"year": 2015,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/2015_Amyotha_Hluttaw_Parliament.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2015_Myanmar_general_election#Results"
+	},
+	{
+		"ids": ["mm"],
+		"country": "Myanmar",
+		"year": 2010,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Myanmar_House_of_Nationalities_2010.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2010_Myanmar_general_election#Results"
+	},
+	{
+		"ids": ["mm"],
+		"country": "Myanmar",
+		"year": 1947,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Burmese_Constituent_Assembly_1947.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1947_Burmese_general_election#Results"
+	},
+	
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 2026,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/27th_Thailand_House_of_Representatives_composition.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2026_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 2023,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/26th_Thailand_House_of_Representatives_composition.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2023_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 2019,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/25th_Thailand_House_of_Representatives_composition.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2019_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 2011,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/24th_Thailand_House_of_Representatives_composition.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2011_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 2007,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Thai_House_of_Representatives_composition_(2007).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2007_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 2006,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/2006_Thai_House_of_Representatives_composition_(annulled).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2006_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 2005,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/22nd_Thailand_House_of_Representatives_composition_(2005).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2005_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 2001,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Thailand_House_of_Representatives_2001.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2001_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 1996,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/20th_Thailand_House_of_Representatives_composition_(1996).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1996_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 1995,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/19th_Thailand_House_of_Representatives_composition_(1995).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1995_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 1995,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/19th_Thailand_House_of_Representatives_composition_(1995).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1995_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 1992,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Thailand_House_of_Representatives_September_1992.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/September_1992_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 1992,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Thailand_House_of_Representatives_September_1992.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/September_1992_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 1969,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/10th_Thai_House_of_Representatives_composition.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1969_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 1957,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/9th_Thailand_House_of_Representatives_composition_(1958).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/December_1957_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 1957,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/8th_Thailand_House_of_Representatives_composition_(1957).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/February_1957_Thai_general_election#Results"
+	},
+	{
+		"ids": ["th"],
+		"country": "Thailand",
+		"year": 1952,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/7th_Thailand_House_of_Representatives_composition_(1952).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1952_Thai_general_election#Results"
+	},
+	
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 2022,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dewan_Rakyat_2022_election_results.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2022_Malaysian_general_election#Results"
+	},
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 2018,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dewan_Rakyat_2018.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2018_Malaysian_general_election#Results"
+	},
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 2013,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dewan_Rakyat_2013.svg?width=600",
+		"wiki_link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_malaisiennes_de_2013"
+	},
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 2008,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dewan_Rakyat_2008.svg?width=600",
+		"wiki_link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_malaisiennes_de_2008"
+	},
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 2004,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dewan_Rakyat_2004_(blocs).svg?width=600",
+		"wiki_link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_malaisiennes_de_2004"
+	},
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 1999,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dewan_Rakyat_1999_(blocs).svg?width=600",
+		"wiki_link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_malaisiennes_de_1999"
+	},
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 1995,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dewan_Rakyat_1995_(blocs).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1995_Malaysian_general_election#Results"
+	},
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 1990,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Malaysia_Dewan_Rakyat_1990.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1990_Malaysian_general_election#Results"
+	},
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 1974,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dewan_Rakyat_1974_(blocs).svg?width=600",
+		"wiki_link": "https://es.wikipedia.org/wiki/Elecciones_federales_de_Malasia_de_1974#Resultados"
+	},
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 1969,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dewan_Rakyat_1969_(blocs).svg?width=600",
+		"wiki_link": "https://es.wikipedia.org/wiki/Elecciones_federales_de_Malasia_de_1969#Resultado_final"
+	},
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 1964,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dewan_Rakyat_1964_(blocs).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1964_Malaysian_general_election#Results"
+	},
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 1959,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Dewan_Rakyat_1959_(blocs).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1959_Malayan_general_election#Results"
+	},
+	{
+		"ids": ["my"],
+		"country": "Malaysia",
+		"year": 1955,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Federal_Legislative_Council_of_Malaysia_(blocs).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1955_Malayan_general_election#Results"
+	},
+	
+	{
+		"ids": ["kh"],
+		"country": "Cambodia",
+		"year": 2023,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodge_Assemblee_nationale_2023.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2023_Cambodian_general_election#Results"
+	},
+	{
+		"ids": ["kh"],
+		"country": "Cambodia",
+		"year": 2018,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Assemblee_cambodge_2018.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2018_Cambodian_general_election#Results"
+	},
+	{
+		"ids": ["kh"],
+		"country": "Cambodia",
+		"year": 2013,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodian_Assembly_2013-2017.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2013_Cambodian_general_election#Results"
+	},
+	{
+		"ids": ["kh"],
+		"country": "Cambodia",
+		"year": 2008,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodian_National_Assembly_composition,_2008-2013.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2008_Cambodian_general_election#Results"
+	},
+	{
+		"ids": ["kh"],
+		"country": "Cambodia",
+		"year": 2003,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodian_National_Assembly_composition,_2003-2008.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2003_Cambodian_general_election#Results"
+	},
+	{
+		"ids": ["kh"],
+		"country": "Cambodia",
+		"year": 1998,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodian_general_election,_1998.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1998_Cambodian_general_election#Results"
+	},
+	{
+		"ids": ["kh"],
+		"country": "Cambodia",
+		"year": 1993,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodian_National_Assembly_composition,_1993-1998.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1993_Cambodian_general_election#Results"
+	},
+	{
+		"ids": ["kh"],
+		"country": "Cambodia",
+		"year": 1981,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodia_National_Assembly_1981.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1981_Cambodian_general_election#Results"
+	},
+	{
+		"ids": ["kh"],
+		"country": "Cambodia",
+		"year": 1976,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodia_National_Assembly_1976.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1976_Cambodian_general_election#Results"
+	},
+	{
+		"ids": ["kh"],
+		"country": "Cambodia",
+		"year": 1972,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Assembly_of_the_Khmer_Republic_1972.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1972_Cambodian_general_election#Results"
+	},
+	{
+		"ids": ["kh"],
+		"country": "Cambodia",
+		"year": 1962,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodian_National_Assembly_1962.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1962_Cambodian_general_election#Results"
+	},
+	{
+		"ids": ["kh"],
+		"country": "Cambodia",
+		"year": 1951,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Cambodian_National_Assembly_1951.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1951_Cambodian_general_election#Results"
+	},
+	
+	{
+		"ids": ["la"],
+		"country": "Laos",
+		"year": 2021,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Laos_Assemblée_nationale_2021.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2021_Laotian_parliamentary_election#Results"
+	},
+	{
+		"ids": ["la"],
+		"country": "Laos",
+		"year": 2016,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Laos_Assemblée_nationale_2016.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2016_Laotian_parliamentary_election#Results"
+	},
+	{
+		"ids": ["la"],
+		"country": "Laos",
+		"year": 1958,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Laos_Parliament_1958.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1958_Laotian_parliamentary_election#Results"
+	},
+	{
+		"ids": ["la"],
+		"country": "Laos",
+		"year": 1955,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Laos_Assemblée_nationale_1955.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1955_Laotian_parliamentary_election#Results"
+	},
+	
+	{
+		"ids": ["vn"],
+		"country": "Vietnam",
+		"year": 2021,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Vietnam_National_Assembly_2021.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2021_Vietnamese_legislative_election#Results"
+	},
+	{
+		"ids": ["vn"],
+		"country": "Vietnam",
+		"year": 2016,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/14th_National_Assembly_of_Vietnam-1st_session_2016.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2016_Vietnamese_legislative_election#Results"
+	},
+	{
+		"ids": ["vn"],
+		"country": "Vietnam",
+		"year": 2011,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/13th_National_Assembly_of_Vietnam.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2011_Vietnamese_legislative_election#Results"
+	},
+	
+	{
+		"ids": ["ph"],
+		"country": "Philippines",
+		"year": 2025,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/2025_Philippine_House_of_Representatives_elections.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2025_Philippine_general_election#House_of_Representatives"
+	},
+	{
+		"ids": ["ph"],
+		"country": "Philippines",
+		"year": 1935,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Assembly_of_the_Philippines_1935.svg?width=600",
+		"wiki_link": "https://es.wikipedia.org/wiki/Elecciones_parlamentarias_de_Filipinas_de_1935"
+	},
+	
+	{
+		"ids": ["id"],
+		"country": "Indonesia",
+		"year": 2024,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/DPR_RI_2024–2029.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2024_Indonesian_general_election?ysclid=mlo5lgb7nf751010176#House_of_Representatives"
+	},
+	{
+		"ids": ["id"],
+		"country": "Indonesia",
+		"year": 2019,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/DPR_2019_(2019_election).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2019_Indonesian_general_election#People's_Representative_Council"
+	},
+	{
+		"ids": ["id"],
+		"country": "Indonesia",
+		"year": 2014,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/2014_Indonesian_legislative_election.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2014_Indonesian_legislative_election#Results"
+	},
+	{
+		"ids": ["id"],
+		"country": "Indonesia",
+		"year": 2009,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Indonesian_House_of_Representatives_2009.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2009_Indonesian_legislative_election#Results"
+	},
+	{
+		"ids": ["id"],
+		"country": "Indonesia",
+		"year": 2004,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/DPR_RI_2004–2009.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2004_Indonesian_legislative_election#Results"
+	},
+	{
+		"ids": ["id"],
+		"country": "Indonesia",
+		"year": 1999,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Indonesia_DPR-RI_1999.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1999_Indonesian_legislative_election#Results"
+	},
+	{
+		"ids": ["id"],
+		"country": "Indonesia",
+		"year": 1997,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Indonesia_DPR_1997.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1997_Indonesian_legislative_election#Results"
+	},
+	{
+		"ids": ["id"],
+		"country": "Indonesia",
+		"year": 1992,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/DPR_RI_1992-1997.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1992_Indonesian_legislative_election#Results"
+	},
+	{
+		"ids": ["id"],
+		"country": "Indonesia",
+		"year": 1971,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Indonesia_DPR-RI_1971_including_unelected_seats.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1971_Indonesian_legislative_election#Results"
+	},
+	{
+		"ids": ["id"],
+		"country": "Indonesia",
+		"year": 1955,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/DPR_Hasil_Pemilu_1955.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1955_Indonesian_legislative_election#Results"
+	},
+	
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 2024,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Iran_Majlis_2024.svg?width=600",
+		"wiki_link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_iraniennes_de_2024#R%C3%A9sultats"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 2020,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Iranian_Parliament_2020.svg?width=600",
+		"wiki_link": "https://el.wikipedia.org/wiki/%CE%99%CF%81%CE%B1%CE%BD%CE%B9%CE%BA%CE%AD%CF%82_%CE%B2%CE%BF%CF%85%CE%BB%CE%B5%CF%85%CF%84%CE%B9%CE%BA%CE%AD%CF%82_%CE%B5%CE%BA%CE%BB%CE%BF%CE%B3%CE%AD%CF%82_2020#%CE%91%CF%80%CE%BF%CF%84%CE%B5%CE%BB%CE%AD%CF%83%CE%BC%CE%B1%CF%84%CE%B1"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 2016,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Islamic_Consultative_Assembly_of_Iran_following_the_2016_elections.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2016_Iranian_legislative_election#Results"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 2016,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Islamic_Consultative_Assembly_of_Iran_following_the_2016_elections.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2016_Iranian_legislative_election#Results"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 2008,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Islamic_Consultative_Assembly_of_Iran_following_the_2008_elections.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2008_Iranian_legislative_election"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 2004,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Consultative_Assembly_of_Iran_following_the_2004_elections.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2004_Iranian_legislative_election#Results"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 2000,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/6th_Parliament.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2000_Iranian_legislative_election"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 1996,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Consultative_Assembly_of_Iran_following_the_1996_election.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1996_Iranian_legislative_election"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 1988,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Consultative_Assembly_of_Iran_following_the_1988_election.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1988_Iranian_legislative_election"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 1984,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Consultative_Assembly_of_Iran_following_the_1984_election.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1984_Iranian_legislative_election#Results"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 1980,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/1980_Iranian_legislative_election.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1984_Iranian_legislative_election#Results"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 1971,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Consultative_Assembly_of_Iran_following_the_1971_election.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1971_Iranian_general_election#Results"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 1961,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Consultative_Assembly_of_Iran_following_the_1961_election.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1961_Iranian_legislative_election#Results"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 1952,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/1952_Iranian_legislative_election.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1952_Iranian_legislative_election"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 1947,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_1947.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1947_Iranian_legislative_election"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 1944,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Iranian_Parliament_1944–1946.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1943%E2%80%9344_Iranian_legislative_election#Results"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 1928,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_1928.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1928_Persian_legislative_election"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 1923,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_1923.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1923_Persian_legislative_election"
+	},
+	{
+		"ids": ["ir"],
+		"country": "Iran",
+		"year": 1914,
+		"region": "Southeast Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_1914.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1914_Persian_legislative_election"
+	},
+	
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 2023,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Turquie_Parlement_2023.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2023_Turkish_parliamentary_election?ysclid=mlo6syjofd256588329#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 2018,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_2018_Elected.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2018_Turkish_parliamentary_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 2015,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_November_2015.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/November_2015_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 2015,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_June_2015.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/June_2015_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 2011,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_2011.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2011_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 2007,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_2007.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2007_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 2002,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_2002.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2002_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 1999,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_1999.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1999_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 1995,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_1995.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1995_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 1991,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_1991.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1991_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 1987,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_1987.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1987_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 1983,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_1983.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1983_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 1977,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_1977.svg?width=600",
+		"wiki_link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_turques_de_1977"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 1965,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/1965_Turkish_General_Elections.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1965_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 1961,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_1961.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1961_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 1957,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_1957.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1957_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 1954,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_1954.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1954_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 1950,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_1950.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1950_Turkish_general_election#Results"
+	},
+	{
+		"ids": ["tr"],
+		"country": "Turkey",
+		"year": 1946,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Turkey_1946.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1946_Turkish_general_election#Results"
+	},
+	
+	{
+		"ids": ["sy"],
+		"country": "Syria",
+		"year": 2025,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/People's_Assembly_of_Syria_2025.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2025_Syrian_parliamentary_election?ysclid=mlo78jyle0365472170#Results"
+	},
+	{
+		"ids": ["sy"],
+		"country": "Syria",
+		"year": 2020,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/People's_Assembly_of_Syria_2020.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2020_Syrian_parliamentary_election#Results"
+	},
+	{
+		"ids": ["sy"],
+		"country": "Syria",
+		"year": 2016,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/People's_Assembly_of_Syria_2016.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2016_Syrian_parliamentary_election#Results"
+	},
+	{
+		"ids": ["sy"],
+		"country": "Syria",
+		"year": 2012,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parlamentswahl_Syrien_2012_Sitze.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2012_Syrian_parliamentary_election#Results"
+	},
+	{
+		"ids": ["sy"],
+		"country": "Syria",
+		"year": 2007,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/People's_Assembly_of_Syria_2007.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2007_Syrian_parliamentary_election#Results"
+	},
+	{
+		"ids": ["sy"],
+		"country": "Syria",
+		"year": 1961,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Syria_1961.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1961_Syrian_parliamentary_election#Results"
+	},
+	{
+		"ids": ["sy"],
+		"country": "Syria",
+		"year": 1954,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Syira_Parliament_1954.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1954_Syrian_parliamentary_election#Results"
+	},
+	{
+		"ids": ["sy"],
+		"country": "Syria",
+		"year": 1953,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_of_Syria_1953.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1953_Syrian_parliamentary_election#Results"
+	},
+	{
+		"ids": ["sy"],
+		"country": "Syria",
+		"year": 1949,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Constitutional_Assembly_of_Syria_1949.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1949_Syrian_constituent_assembly_election#Results"
+	},
+	{
+		"ids": ["sy"],
+		"country": "Syria",
+		"year": 1947,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Syira_Parliament_1947.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1947_Syrian_parliamentary_election#Results"
+	},
+	
+	{
+		"ids": ["lb"],
+		"country": "Lebanon",
+		"year": 2022,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Liban_Chambre_des_députés_2022.svg?width=600",
+		"wiki_link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_libanaises_de_2022#R%C3%A9sultats"
+	},
+	{
+		"ids": ["lb"],
+		"country": "Lebanon",
+		"year": 1992,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lebanon_Parliament_1992.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1992_Lebanese_general_election#Results"
+	},
+	
+	{
+		"ids": ["ps"],
+		"country": "Palestine",
+		"year": 2006,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Palestine_Legislative_Council_2006.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2006_Palestinian_legislative_election#Results"
+	},
+	
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 2022,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/November_2022_Knesset.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2022_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 2021,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Israel_Knesset_2021_Français.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2021_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 2020,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Israel_Knesset_2020.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2020_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 2019,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Israel_Knesset_Sept_2019.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/September_2019_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 2019,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/April_Election_Result.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/April_2019_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 2015,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Israel_Knesset_2015.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2015_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 2013,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Israel_Knesset_2013.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2013_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 2009,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Israel_Knesset_2009.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2009_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 2006,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/17th_Knesset_Composition.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2006_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 2003,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Israel_Knesset_2003.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2003_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 1999,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/15th_Knesset_Composition.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1999_Israeli_general_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 1996,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/14th_Knesset_Composition.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1996_Israeli_general_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 1992,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Knesset_1992.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1992_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 1988,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Knesset_1988.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1988_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 1984,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/1984_Knesset.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1984_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 1965,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/1965_Knesset.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1965_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 1961,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/1961_Knesset.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1961_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 1959,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/1959_Knesset.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1959_Israeli_legislative_election#Results"
+	},
+	{
+		"ids": ["is"],
+		"country": "Israel",
+		"year": 1949,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Israeli_Constituent_Assembly_(1st_Knesset)_Composition.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1949_Israeli_Constituent_Assembly_election#Results"
+	},
+	
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 2025,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Iraq_Parliament_2025.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2025_Iraqi_parliamentary_election?ysclid=mlo84owkxa334273040#Results"
+	},
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 2021,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Iraq2021ParliamentElection.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2021_Iraqi_parliamentary_election#National_results"
+	},
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 2018,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Council_of_Representatives_of_Iraq_2018.svg?width=600",
+		"wiki_link": "https://es.wikipedia.org/wiki/Elecciones_parlamentarias_de_Irak_de_2018"
+	},
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 2014,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/IraqiElection_2014.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2014_Iraqi_parliamentary_election#Results"
+	},
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 2010,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Iraq_Council_of_Reps2010.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2010_Iraqi_parliamentary_election#Results"
+	},
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 2005,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Council_of_Representatives_of_Iraq_2005.svg?width=600",
+		"wiki_link": "https://es.wikipedia.org/wiki/Elecciones_parlamentarias_de_Irak_de_diciembre_de_2005"
+	},
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 2005,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Assembly_of_Iraq_Jan_2005.svg?width=600",
+		"wiki_link": "https://es.wikipedia.org/wiki/Elecciones_parlamentarias_de_Irak_de_enero_de_2005"
+	},
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 2000,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Assembly_of_Iraq_2000.svg?width=600",
+		"wiki_link": "https://es.wikipedia.org/wiki/Elecciones_parlamentarias_de_Irak_de_2000"
+	},
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 1996,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/National_Assembly_of_Iraq_1996.svg?width=600",
+		"wiki_link": "https://es.wikipedia.org/wiki/Elecciones_parlamentarias_de_Irak_de_1996"
+	},
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 1954,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Chamber_of_Deputies_of_Iraq_September_1954.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/September_1954_Iraqi_parliamentary_election#Results"
+	},
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 1954,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Chamber_of_Deputies_of_Iraq_June_1954.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/June_1954_Iraqi_parliamentary_election"
+	},
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 1953,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Chamber_of_Deputies_of_Iraq_1953.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1953_Iraqi_parliamentary_election"
+	},
+	{
+		"ids": ["iq"],
+		"country": "Iraq",
+		"year": 1948,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Chamber_of_Deputies_of_Iraq_1948.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1948_Iraqi_parliamentary_election"
+	},
+	
+	{
+		"ids": ["jo"],
+		"country": "Jordan",
+		"year": 2020,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Jordan_House_2020.svg?width=600",
+		"wiki_link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_jordaniennes_de_2020#R%C3%A9sultats"
+	},
+	{
+		"ids": ["jo"],
+		"country": "Jordan",
+		"year": 2016,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Jordan_House_Parliament_2016.svg?width=600",
+		"wiki_link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_jordaniennes_de_2016#R%C3%A9sultats"
+	},
+	
+	{
+		"ids": ["bh"],
+		"country": "Bahrain",
+		"year": 2014,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Council_of_Representatives_(Bahrain)_diagram.svg?width=600",
+		"wiki_link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_bahre%C3%AFniennes_de_2014"
+	},
+	
+	{
+		"ids": ["ae"],
+		"country": "United Arab Emirates",
+		"year": 2023,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Council_of_Representatives_(Bahrain)_diagram.svg?width=600",
+		"wiki_link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_%C3%A9miraties_de_2023"
+	},
+	
+	{
+		"ids": ["qa"],
+		"country": "Qatar",
+		"year": 2021,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Qatar_Consultative_Assembly_2021.svg?width=600",
+		"wiki_link": "https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_qatariennes_de_2021#R%C3%A9sultats"
+	},
+	
+	{
+		"ids": ["ye"],
+		"country": "Yemen",
+		"year": 2003,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/2003_Yemen_House_of_Representatives.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2003_Yemeni_parliamentary_election#Results"
+	},
+	{
+		"ids": ["ye"],
+		"country": "Yemen",
+		"year": 1997,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/1997_Yemen_House_of_Representatives.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1997_Yemeni_parliamentary_election#Results"
+	},
+	{
+		"ids": ["ye"],
+		"country": "Yemen",
+		"year": 1993,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/1993_Yemen_House_of_Representatives.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1993_Yemeni_parliamentary_election#Results"
+	},
+	{
+		"ids": ["ye"],
+		"country": "South Yemen",
+		"year": 1986,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/South_Yemen_Supreme_People's_Council_1986.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1986_South_Yemeni_parliamentary_election#Results"
+	},
+	
+	{
+		"ids": ["om"],
+		"country": "Oman",
+		"year": 2023,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/OmanConsultativeAssemblyStructureDiagram.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2023_Omani_general_election?ysclid=mlo91ucvv6160989628#Results"
+	},
+	{
+		"ids": ["om"],
+		"country": "Oman",
+		"year": 2019,
+		"region": "Western Asia",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Oman_Conseil_consultatif_2019.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2019_Omani_general_election#Results"
 	},
 ];
