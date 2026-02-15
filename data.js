@@ -144,6 +144,11 @@ const WORLD_MAP_SVG = `
 		<path id="AM" name="Armenia" d="M1230.8 253l-1.8 0.2-2.8-3.7-0.2-1-2.3 0-1.9-1.7-1 0.1-2.4-1.8-4.2-1.6-0.1-3.1-1.3-2.2 7-1 1.4 1.6 2.2 1.1-0.7 1.6 3.2 2.2-1.1 2.1 2.6 1.7 2.5 1 0.9 4.5z"></path>
 		<path id="AZ" name="Azerbaijan" d="M 1229 253.2 1225.2 252.3 1222 249.4 1220.8 246.9 1221.8 246.8 1223.7 248.5 1226 248.5 1226.2 249.5 1229 253.2 Z"></path>
 		<path id="AZ" name="Azerbaijan" d="M 1235.3 236.2 1237.8 233.6 1241.3 236.9 1244.9 241.5 1247.4 241.8 1249.3 243.5 1245.1 244 1245.2 249 1244.8 251.2 1243.1 252.7 1243.9 255.8 1242.6 256.2 1238.7 252.8 1239.9 249.7 1238 247.8 1236.1 248.3 1230.8 253 1229.9 248.5 1227.4 247.5 1224.8 245.8 1225.9 243.7 1222.7 241.5 1223.4 239.9 1221.2 238.8 1219.8 237.2 1220.9 236.1 1225.1 238 1228 238.3 1228.6 237.6 1225.3 234.1 1226.5 233.3 1228 233.5 1232.3 237.3 1234.7 237.8 1235.3 236.2 Z"></path>
+		<path id="LK" name="Sri Lanka" d="M1445.9 462l-4.8 1.5-2.9-5.1-1.4-9.2 2-10.4 4.1 3.5 2.8 4.5 3.1 6.7-0.6 6.7-2.3 1.8z"></path>
+		<path id="IN" name="India" d="M1427.6 308l-2.8 3-0.9 6 5.8 2.4 5.8 3.1 7.8 3.6 7.7 0.9 3.8 3.2 4.3 0.6 6.9 1.5 4.6-0.1 0.1-2.5-1.5-4.1-0.2-2.7 3.1-1.4 1.5 5.1 0.4 1.2 5.5 2.5 3.2-1 4.7 0.4 4.5-0.2-0.5-3.9-2.6-2.1 4.2-0.8 3.9-4.8 5.4-4 4.9 1.5 3.2-2.7 3.6 4-1.2 2.7 6.1 1 1 2.4-1.7 1.2 1.4 3.9-4.2-1.1-6.2 4.4 0.9 3.7-2 5.4 0.3 3.1-1.6 5.3-4.6-1.5 0.9 6.7-1 2.2 1 2.7-2.5 1.5-4.4-10.2-1.5 0-0.3 4.2-3.6-3.4 1.2-3.6 2.4-0.4 1.6-5.4-3.4-1.1-5.1 0.1-5.4-0.9-1.2-4.5-2.7-0.3-4.9-2.8-1.2 4.4 4.6 3.4-3 2.4-0.9 2.3 3.7 1.7-0.3 3.9 2.6 4.8 1.6 5.3-0.5 2.4-3.8-0.1-6.6 1.3 0.9 4.8-2.4 3.8-7.5 4.4-5.3 7.5-3.8 4.1-5 4.2 0.3 2.9-2.6 1.6-4.8 2.3-2.6 0.3-1.2 4.9 1.9 8.4 0.7 5.3-1.9 6.1 0.7 10.9-2.9 0.3-2.3 4.9 1.9 2.2-5.1 1.8-1.7 4.3-2.2 1.9-5.6-6-3.1-9-2.5-6.5-2.2-3-3.4-6.2-2-8-1.4-4-5.9-8.8-3.5-12.5-2.6-8.2-0.8-7.8-1.7-6-7.7 3.9-4-0.8-8.1-7.8 2.4-2.3-1.9-2.5-7.1-5.5 3.2-4.3 12.1 0-1.8-5.5-3.5-3.2-1.4-5-4-2.8 4.9-6.8 6.5 0.5 4.5-6.7 2.2-6.5 3.9-6.5-1-4.6 3.8-3.7-5.1-3.1-2.9-4.4-3.3-5.6 2-2.8 8.5 1.6 5.7-1 3.8-5.4 7.7 7.6 0.8 5.2 3 3.3 0.6 3.3-4.1-0.9 3.2 7.1 6.2 4 8.6 4.5z"></path>
+		<path id="NP" name="Nepal" d="M1469 322.9l0.2 2.7 1.5 4.1-0.1 2.5-4.6 0.1-6.9-1.5-4.3-0.6-3.8-3.2-7.7-0.9-7.8-3.6-5.8-3.1-5.8-2.4 0.9-6 2.8-3 1.9-1.5 4.8 2 6.4 4.2 3.3 0.9 2.5 3.1 4.5 1.2 5 2.9 6.5 1.4 6.5 0.7z"></path>
+		<path id="BT" name="Bhutan" d="M1488.8 323.5l2.6 2.1 0.5 3.9-4.5 0.2-4.7-0.4-3.2 1-5.5-2.5-0.4-1.2 2.6-4.8 2.6-1.6 4.3 1.4 2.9 0.2 2.8 1.7z"></path>
+		<path id="PK" name="Pakistan" d="M1401.6 273.9l-3.8 5.4-5.7 1-8.5-1.6-2 2.8 3.3 5.6 2.9 4.4 5.1 3.1-3.8 3.7 1 4.6-3.9 6.5-2.2 6.5-4.5 6.7-6.5-0.5-4.9 6.8 4 2.8 1.4 5 3.5 3.2 1.8 5.5-12.1 0-3.2 4.3-4.2-1.6-2.2-4.6-4.9-4.9-10 1.2-9 0.1-7.6 0.9 1.1-7.4 7.5-3.4-0.9-2.9-2.7-1.1-1-5.6-5.7-2.8-2.8-3.9-3.2-3.4 9.6 3.3 5.3-1 3.4 0.8 0.9-1.4 3.9 0.6 6.6-2.7-0.8-5.4 2.3-3.7 4.1 0 0.2-1.7 4-0.9 2.1 0.6 1.8-1.8-1.1-3.9 1.4-3.8 3.1-1.7-3.1-4.2 5.2 0.2 0.9-2.3-0.8-2.5 2-2.7-1.4-3.2-1.9-2.7 2.4-2.8 5.3-1.3 5.9-0.8 2.4-1.1 2.9-0.8 4.7 3 2.9 5 9.5 2.5z"></path>
 	</svg>
 `;
 
@@ -154,6 +159,7 @@ const regionMap = {
 	"South America": ["CO", "VE", "EC", "PE", "BO", "CL", "AR", "PY", "UY", "BR", "GY", "SR"],
 	"Central Asia": ["KZ", "UZ", "KG", "TJ", "TM"],
 	"East Asia": ["CH", "MN", "TW", "KP", "JP"],
+	"Indostan": ["LK", "IN", "NP", "BT", "PK"],
 };
 
 const database = [
@@ -8972,5 +8978,301 @@ const database = [
 		"region": "Eastern Europe",
 		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Supreme_Soviet_of_Azerbaijan_SSR_and_Republic_of_Azerbaijan_in_1990-1995.svg?width=600",
 		"wiki_link": "https://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%80%D0%BB%D0%B0%D0%BC%D0%B5%D0%BD%D1%82%D1%81%D0%BA%D0%B8%D0%B5_%D0%B2%D1%8B%D0%B1%D0%BE%D1%80%D1%8B_%D0%B2_%D0%90%D0%B7%D0%B5%D1%80%D0%B1%D0%B0%D0%B9%D0%B4%D0%B6%D0%B0%D0%BD%D0%B5_(1990)"
-	}
+	},
+	{
+		"ids": ["lk"],
+		"country": "Sri Lanka",
+		"year": 2024,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sri_Lanka_Parliament_2024.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2024_Sri_Lankan_parliamentary_election"
+	},
+	{
+		"ids": ["lk"],
+		"country": "Sri Lanka",
+		"year": 2020,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sri_Lanka_Parliament_2020.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2020_Sri_Lankan_parliamentary_election"
+	},
+	{
+		"ids": ["lk"],
+		"country": "Sri Lanka",
+		"year": 2015,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sri_Lanka_Parliament_2015.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2015_Sri_Lankan_parliamentary_election"
+	},
+	{
+		"ids": ["lk"],
+		"country": "Sri Lanka",
+		"year": 2015,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sri_Lanka_Parliament_2015.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2015_Sri_Lankan_parliamentary_election"
+	},
+	{
+		"ids": ["lk"],
+		"country": "Sri Lanka",
+		"year": 1994,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sri_Lanka_Parliament_1994.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1994_Sri_Lankan_parliamentary_election"
+	},
+	{
+		"ids": ["lk"],
+		"country": "Sri Lanka",
+		"year": 1989,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sri_Lanka_Parliament_1989.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1989_Sri_Lankan_parliamentary_election"
+	},
+	{
+		"ids": ["lk"],
+		"country": "Sri Lanka",
+		"year": 1977,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Sri_Lanka_Parliament_1977.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1977_Sri_Lankan_parliamentary_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 2024,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/India_18th_Lok_Sabha_Election_Result_2024.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2024_Indian_general_election#Results"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 2019,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_2019.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2019_Indian_general_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 2014,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_2014.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2014_Indian_general_election#Results"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 2009,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_2009.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2009_Indian_general_election#Results"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 2004,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_2004.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2004_Indian_general_election#Results"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1999,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1999.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1999_Indian_general_election#Results"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1998,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1998.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1998_Indian_general_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1996,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1996.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1996_Indian_general_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1991,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1991.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1991_Indian_general_election#Results"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1989,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1989.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1989_Indian_general_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1984,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1984.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1984_Indian_general_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1980,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1980.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1980_Indian_general_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1977,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1977.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1977_Indian_general_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1971,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1971.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1971_Indian_general_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1967,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1967.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1967_Indian_general_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1962,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1962.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1962_Indian_general_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1957,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1957.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1957_Indian_general_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1952,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Lok_Sabha_Zusammensetzung_1952.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1951–52_Indian_general_election"
+	},
+	{
+		"ids": ["in"],
+		"country": "India",
+		"year": 1946,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/India_Constituent_Assembly_1946.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1946_Indian_Constituent_Assembly_election"
+	},
+	{
+		"ids": ["np"],
+		"country": "Nepal",
+		"year": 2022,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Nepalese_House_of_Representatives_2022.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2022_Nepalese_general_election"
+	},
+	{
+		"ids": ["np"],
+		"country": "Nepal",
+		"year": 2008,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Nepal_Constituent_Assembly_2008.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2008_Nepalese_Constituent_Assembly_election#Results"
+	},
+	{
+		"ids": ["np"],
+		"country": "Nepal",
+		"year": 1999,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Nepal_PratinidhiSabha_1999.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1999_Nepalese_general_election"
+	},
+	{
+		"ids": ["np"],
+		"country": "Nepal",
+		"year": 1994,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Nepal_PratinidhiSabha_1994.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1994_Nepalese_general_election"
+	},
+	{
+		"ids": ["np"],
+		"country": "Nepal",
+		"year": 1994,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Nepal_PratinidhiSabha_1994.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1994_Nepalese_general_election"
+	},
+	{
+		"ids": ["np"],
+		"country": "Nepal",
+		"year": 1959,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Pratinidhi_Sabha,_Nepal,_1959.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/1959_Nepalese_general_election"
+	},
+	{
+		"ids": ["bt"],
+		"country": "Bhutan",
+		"year": 2024,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Bhoutan_Assemblée_nationale_2024.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2023–24_Bhutanese_National_Assembly_election"
+	},
+	{
+		"ids": ["bt"],
+		"country": "Bhutan",
+		"year": 2018,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/2018_Assemblee_nationale_du_Bhoutan.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2018_Bhutanese_National_Assembly_election"
+	},
+	{
+		"ids": ["bt"],
+		"country": "Bhutan",
+		"year": 2013,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/2013_National_Assembly_of_Bhutan_Seat_Composition.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2013_Bhutanese_National_Assembly_election"
+	},
+	{
+		"ids": ["bt"],
+		"country": "Bhutan",
+		"year": 2008,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/Assemblee_nationale_bhoutan_2008.svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2008_Bhutanese_National_Assembly_election"
+	},
+	{
+		"ids": ["pk"],
+		"country": "Pakistan",
+		"year": 2024,
+		"region": "Indostan",
+		"img": "https://commons.wikimedia.org/wiki/Special:FilePath/16th_National_Assembly_(Pakistan).svg?width=600",
+		"wiki_link": "https://en.wikipedia.org/wiki/2024_Pakistani_general_election#Results"
+	},
 ];
